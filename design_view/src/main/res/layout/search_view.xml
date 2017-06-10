@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >  
+
+    <ImageButton
+    android:src="@drawable/search_return"
+    android:id="@+id/searh_returnBtn"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+      
+        <EditText
+            android:id="@+id/search_input"
+            android:drawableLeft="@drawable/search_icon"
+            android:textSize="16sp"
+            android:hint="@string/search_hint"
+            android:imeOptions="actionSearch"
+            android:layout_gravity="center_vertical"
+            android:inputType="text"
+            android:layout_width="match_parent"
+            android:layout_height="48dp" />
+        <Button
+            android:src="@drawable/search_clear"
+            android:id="@+id/search_clear"
+            android:layout_width="40dp"
+            android:layout_height="48dp" />
+
+    </FrameLayout>
+
+            
+
+   
+
+
+    </LinearLayout>

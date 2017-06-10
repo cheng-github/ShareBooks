@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+        <com.arlib.floatingsearchview.FloatingSearchView
+            app:floatingSearch_backgroundColor="@color/accent_material_dark"
+            app:showAsAction="never"
+            app:floatingSearch_menu="@menu/search_menu"
+            app:floatingSearch_leftActionMode="showSearch"
+            android:id="@+id/floating_search_view"
+            app:floatingSearch_searchHint="请输入搜索关键字"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </com.arlib.floatingsearchview.FloatingSearchView>
+</LinearLayout>

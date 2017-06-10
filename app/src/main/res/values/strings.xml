@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">BookShare</string>
+    <string name="splash_text">跳过</string>
+    <string name="hello_world">小伟，GO！GO！GO！</string>
+    <string name="action_settings">设置</string>
+    <string name="search_hint">请输入搜索关键字</string>
+    
+    <!-- 下面是主界面学院的名称-->
+    <string name="guangdian">光电学院</string>
+    <string name="nengdong">能动学院</string>
+    <string name="guanli">管理学院</string>
+    <string name="jixie">机械学院</string>
+    <string name="waiyu">外语学院</string>
+    <string name="huanjian">环建学院</string>
+    <string name="yishi">医食学院</string>
+    <string name="chupan">出版学院</string>
+    <string name="li">理学院</string>
+    <string name="cailiao">材料学院</string>
+    <string name="jichu">基础学院</string>
+    <string name="jixu">继教学院</string>
+    <string name="gongji">工程学院</string>
+    <string name="zhonyin">中英学院</string>
+    <string name="zhonde">中德学院</string>
+    <string name="sheke">社科学院</string>
+    <string name="tiyu">体育部</string>
+    <string name="yinyue">音乐系</string>
+    <string name="hujiang">沪江学院</string>
+    <string name="taikezi">太赫兹学院</string>
+
+    <!-- 这里是第二个发现的fragment里的内容-->
+    <string name="find">这里将要写发现书籍的内容</string>
+
+    <!-- 这里将要写我的信息的字符串内容-->
+    <string name="myinf">这里将要写我的信息的字符串内容</string>
+</resources>

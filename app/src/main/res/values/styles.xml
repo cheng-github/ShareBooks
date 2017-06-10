@@ -1,0 +1,21 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorAccent">@color/material_green_A200</item>
+        <item name="colorPrimaryDark">@color/accent_material_light</item>
+        <item name="colorPrimary">@color/accent_material_dark</item>
+        <item name="android:windowBackground">@color/dim_foreground_material_dark</item>
+    </style>
+
+    <style name="Theme.AppStartLoad" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/splash</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+
+
+</resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ShareBooks.iml" filepath="$PROJECT_DIR$/ShareBooks.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/design_view/design_view.iml" filepath="$PROJECT_DIR$/design_view/design_view.iml" />
+    </modules>
+  </component>
+</project>
