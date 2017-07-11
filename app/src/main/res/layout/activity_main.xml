@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/color_white"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -29,7 +30,7 @@
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="8"
+        android:layout_weight="10"
         />
 
     <LinearLayout
@@ -39,20 +40,27 @@
         android:layout_width="match_parent"
         android:layout_height="0dp">
         <ImageButton
+            android:background="@color/accent_material_dark"
+            android:src="@drawable/first_page"
             android:id="@+id/tab_bottom_first"
             android:layout_weight="0.33"
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
         <ImageButton
+            android:src="@drawable/second_page"
+            android:background="@color/accent_material_dark"
             android:id="@+id/tab_bottom_second"
             android:layout_weight="0.33"
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
+
         <ImageButton
             android:id="@+id/tab_bottom_third"
-            android:layout_weight="0.33"
             android:layout_width="0dp"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:layout_weight="0.33"
+            android:background="@color/accent_material_dark"
+            android:src="@drawable/third_page"/>
     </LinearLayout>
 
 

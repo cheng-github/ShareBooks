@@ -4,5 +4,5 @@
 <!-- 下面是主界面搜索框的颜色-->
     <color name="darkgray">#B2DFDB</color>
     <color name="color_white">#ffffff</color>
-    <color name="search_backgroud">#B2DFDB</color>
+    <color name="search_background">#F5F5F5</color>
 </resources>

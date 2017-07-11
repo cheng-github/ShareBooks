@@ -17,9 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.List;
 
 import usst.edu.cn.sharebooks.R;
 
@@ -31,8 +29,6 @@ import usst.edu.cn.sharebooks.R;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private Toolbar toolbar;
     private ViewPager mViewPager;
-    private static int layoutId;
-    private List<Fragment> content;
     LayoutInflater mLayoutInflater;
     Context mContext;
     private int mPageIndex;
@@ -48,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //如果是首次启动应用,不是旋转屏幕什么的
         if (savedIntance == null){
             mPageIndex = 0;
+            updateBottomButtons(mPageIndex);
         }
     }
 
@@ -78,8 +75,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onPageSelected(int position) {
-                Log.i("position","位置为     "+position);
+                Log.i("position","的之为     "+position);
                 mPageIndex = position;
+                updateBottomButtons(mPageIndex);
             }
 
             @Override
@@ -149,6 +147,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                    return;
                }
                break;
+        }
+    }
+    //这个方法用于为底部的按钮设置颜色
+    private void updateBottomButtons(int pos){
+        if (pos == 0){
+            ((ImageButton)this.findViewById(R.id.tab_bottom_first)).setImageResource(R.drawable.first_page_black);
+            ((ImageButton)this.findViewById(R.id.tab_bottom_second)).setImageResource(R.drawable.second_page);
+            ((ImageButton)this.findViewById(R.id.tab_bottom_third)).setImageResource(R.drawable.third_page);
+        }else if(pos == 1){
+            ((ImageButton)this.findViewById(R.id.tab_bottom_first)).setImageResource(R.drawable.first_page);
+            ((ImageButton)this.findViewById(R.id.tab_bottom_second)).setImageResource(R.drawable.second_page_black);
+            ((ImageButton)this.findViewById(R.id.tab_bottom_third)).setImageResource(R.drawable.third_page);
+        }else if (pos == 2){
+            ((ImageButton)this.findViewById(R.id.tab_bottom_first)).setImageResource(R.drawable.first_page);
+            ((ImageButton)this.findViewById(R.id.tab_bottom_second)).setImageResource(R.drawable.second_page);
+            ((ImageButton)this.findViewById(R.id.tab_bottom_third)).setImageResource(R.drawable.third_page_black);
         }
     }
 

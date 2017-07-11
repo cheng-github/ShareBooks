@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    android:background="@color/accent_material_dark"
     android:id="@+id/first_fragment"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
@@ -12,13 +13,12 @@
         android:paddingRight="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:height="40dp"
         android:gravity="center_vertical"
         android:layout_margin="3dp"
         android:background="@drawable/search_input_shape"
         android:drawableStart="@drawable/search_icon"
         android:text="@string/search_hint"
-        android:textSize="12sp" />
+         />
 <GridLayout
     android:background="@color/accent_material_dark"
     android:columnCount="4"
