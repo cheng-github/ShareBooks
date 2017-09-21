@@ -15,6 +15,7 @@ import com.arlib.floatingsearchview.suggestions.model.SearchSuggestion;
 import usst.edu.cn.sharebooks.R;
 
 /**
+ *
  * Created by Cheng on 2017/5/25.
  */
 

@@ -5,4 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="darkgray">#cccc</color>
     <color name="color_white">#ffffff</color>
+    
+    <!-- 网格分割线的颜色-->
+    <color name="ddcx_color_grey2">#cccc</color>
 </resources>

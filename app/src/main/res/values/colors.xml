@@ -5,4 +5,7 @@
     <color name="darkgray">#B2DFDB</color>
     <color name="color_white">#ffffff</color>
     <color name="search_background">#F5F5F5</color>
+    
+    <!-- 学院布局按钮颜色-->
+    <color name="first_fragment_button">#B2DFDB</color>
 </resources>

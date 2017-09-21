@@ -20,12 +20,12 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedIntance);
         setContentView(R.layout.activity_splash);
         new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent mainIntent = new Intent(SplashActivity.this,MainActivity.class);
-                startActivity(mainIntent);
-                finish();
-            }
+                @Override
+                public void run() {
+                    Intent mainIntent = new Intent(SplashActivity.this,MainActivity.class);
+                    startActivity(mainIntent);
+                    finish();
+                }
         },SPLASH_DELAY_LENGTH);
     }
 }

@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@color/color_white"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
-        android:id="@+id/appbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
         <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -23,15 +19,30 @@
             android:textSize="20sp"
             />
     </android.support.v7.widget.Toolbar>
-    </LinearLayout>
-
-
+        <!--
+        <LinearLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+         </LinearLayout>
+         看来这里这个LinearLayout是多余的
+        -->
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="10"
         />
+    <!-- <FrameLayout
+    android:id="@+id/action_container"
+    android:layout_weight="10"
+    android:layout_width="match_parent"
+    android:layout_height="0dp">
+
+</FrameLayout>
+    我的猜想是正确的，在一个LinearLayout里包含包括任何组件，都可以设置weight（权重）,但是在一个relativelayout里就不能为
+    它的子组件设置权重的，所以这也是布局里比较重要的一点
+    -->
 
     <LinearLayout
         android:layout_weight="1"

@@ -14,12 +14,9 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.TextView;
-
-
 import usst.edu.cn.sharebooks.R;
+import usst.edu.cn.sharebooks.fragment.MyFragment;
 
 /**
  *
@@ -37,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedIntance){
         super.onCreate(savedIntance);
         setContentView(R.layout.activity_main);
-        mContext = MainActivity.this;
         initData();
         setupToolbar();
         setupViewPager();
@@ -49,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initData(){
+        mContext = MainActivity.this;
         mLayoutInflater = getLayoutInflater();
         this.findViewById(R.id.tab_bottom_first).setOnClickListener(this);
         this.findViewById(R.id.tab_bottom_second).setOnClickListener(this);
@@ -62,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
-    void  setupViewPager(){
+    private void  setupViewPager(){
         mViewPager = (ViewPager)findViewById(R.id.viewpager);
         FragmentStatePagerAdapter adapter = new MyFragmentAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(adapter);
@@ -75,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onPageSelected(int position) {
-                Log.i("position","的之为     "+position);
+                //    Log.i("position","的之为     "+position);
                 mPageIndex = position;
                 updateBottomButtons(mPageIndex);
             }
@@ -110,42 +107,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
        switch (v.getId()){
             case R.id.tab_bottom_first:
-                if (mPageIndex == 0) return;
-                else if (mPageIndex == 1){
-                    mViewPager.arrowScroll(1);
-                    mPageIndex = 0;
-                }
-                else {
-                    mViewPager.arrowScroll(1);
-                    mViewPager.arrowScroll(1);
-                    mPageIndex = 0;
-                }
+//                if (mPageIndex == 0) return;
+//                else if (mPageIndex == 1){
+//                    mViewPager.arrowScroll(1);
+//                    mPageIndex = 0;
+//                }
+//                else {
+//                    mViewPager.arrowScroll(1);
+//                    mViewPager.arrowScroll(1);
+//                    mPageIndex = 0;
+//                }
+                mViewPager.setCurrentItem(0);
                 break;
            case R.id.tab_bottom_second:
-               if (mPageIndex == 0){
-                   mViewPager.arrowScroll(2);
-                   mPageIndex = 1;
-               }else if (mPageIndex == 1){
-                   return;
-               }else {
-                   mViewPager.arrowScroll(1);
-                   mPageIndex = 1;
-               }
+//               if (mPageIndex == 0){
+//                   mViewPager.arrowScroll(2);
+//                   mPageIndex = 1;
+//               }else if (mPageIndex == 1){
+//                   return;
+//               }else {
+//                   mViewPager.arrowScroll(1);
+//                   mPageIndex = 1;
+//               }
+               mViewPager.setCurrentItem(1);
                break;
            case R.id.tab_bottom_third:
-               if (mPageIndex == 0){
-                   mViewPager.arrowScroll(2);
-                   mViewPager.arrowScroll(2);
-                   mPageIndex = 2;
-               }else if (mPageIndex == 1){
-                   mViewPager.arrowScroll(2);
-                   mPageIndex = 2;
-               }else {
-                   return;
-               }
+//               if (mPageIndex == 0){
+//                   mViewPager.arrowScroll(2);
+//                   mViewPager.arrowScroll(2);
+//                   mPageIndex = 2;
+//               }else if (mPageIndex == 1){
+//                   mViewPager.arrowScroll(2);
+//                   mPageIndex = 2;
+//               }else {
+//                   return;
+//               }
+               mViewPager.setCurrentItem(2);
                break;
         }
     }
@@ -186,46 +185,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return 3;
         }
     }
-
-    public static class MyFragment extends Fragment {
-        private static String Section_Number="section_number";
-
-      //使用newInstance去有选择的加载我们需要的fragment布局文件
-        public static MyFragment newInstance(int sectionNumber){
-            MyFragment myFragment = new MyFragment();
-            Bundle args = new Bundle();
-            args.putInt(Section_Number,sectionNumber);
-            myFragment.setArguments(args);
-            return myFragment;
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater,
-                                 ViewGroup container, Bundle savedInstanceState){
-            int section_number = getArguments().getInt(Section_Number);
-            View rootView = inflater.inflate(
-                    R.layout.main_acrivity_fragment, container, false);
-            switch (section_number){
-                case 1:
-                    rootView = inflater.inflate(R.layout.first_fragment,container,false);
-                    ((TextView)rootView.findViewById(R.id.search_begin)).setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Intent intent = new Intent(getActivity(),SearchActivity.class);
-                            startActivity(intent);
-                        }
-                    });
-                    break;
-                case 2:
-                    rootView = inflater.inflate(R.layout.second_fragment,container,false);
-                    break;
-                case 3:
-                    rootView = inflater.inflate(R.layout.third_fragment,container,false);
-                    break;
-            }
-            return rootView;
-        }
-
-    }
-
 }

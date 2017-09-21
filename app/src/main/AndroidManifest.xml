@@ -3,6 +3,7 @@
     package="usst.edu.cn.sharebooks">
 
     <application
+        android:name=".ShareApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -24,6 +25,7 @@
 
         <activity android:name=".ui.activity.SearchActivity"/>
 
+        <activity android:name=".ui.activity.Title_Activity"/>
     </application>
 
 </manifest>

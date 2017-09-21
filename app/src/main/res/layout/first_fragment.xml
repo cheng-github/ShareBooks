@@ -19,13 +19,15 @@
         android:drawableStart="@drawable/search_icon"
         android:text="@string/search_hint"
          />
-<GridLayout
-    android:background="@color/accent_material_dark"
-    android:columnCount="4"
-    android:rowCount="5"
-    android:layout_width="match_parent"
-   android:layout_height="match_parent">
+    <GridLayout
+        android:background="@color/first_fragment_button"
+        android:columnCount="4"
+        android:rowCount="5"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <Button
+        android:layout_margin="0dp"
+        android:background="@color/first_fragment_button"
         android:text="@string/guangdian"
         android:layout_rowWeight="0.25"
         android:layout_columnWeight="0.25"
@@ -34,6 +36,7 @@
         android:id="@+id/one"
         />
     <Button
+        android:background="@color/first_fragment_button"
         android:text="@string/nengdong"
         android:layout_rowWeight="0.25"
         android:layout_columnWeight="0.25"
@@ -42,6 +45,7 @@
         android:id="@+id/two"
         />
     <Button
+        android:background="@color/first_fragment_button"
         android:text="@string/guanli"
         android:layout_columnWeight="0.25"
         android:layout_rowWeight="0.25"
@@ -50,6 +54,7 @@
         android:id="@+id/three"
         />
     <Button
+        android:background="@color/first_fragment_button"
         android:text="@string/jixie"
         android:layout_columnWeight="0.25"
         android:layout_rowWeight="0.25"
@@ -58,6 +63,7 @@
         android:id="@+id/four"
         />
     <Button
+        android:background="@color/first_fragment_button"
         android:id="@+id/five"
         android:layout_columnWeight="0.25"
         android:layout_rowWeight="0.25"
@@ -66,6 +72,7 @@
         android:text="@string/waiyu"
         />
     <Button
+        android:background="@color/first_fragment_button"
         android:id="@+id/six"
         android:layout_columnWeight="0.25"
         android:layout_rowWeight="0.25"
@@ -73,6 +80,7 @@
         android:layout_height="0dp"
         android:text="@string/huanjian"/>
     <Button
+        android:background="@color/first_fragment_button"
         android:id="@+id/seven"
         android:layout_columnWeight="0.25"
         android:layout_rowWeight="0.25"
@@ -80,6 +88,7 @@
         android:layout_height="0dp"
         android:text="@string/yishi"/>
     <Button
+        android:background="@color/first_fragment_button"
         android:id="@+id/eight"
         android:layout_columnWeight="0.25"
         android:layout_rowWeight="0.25"
@@ -88,6 +97,7 @@
         android:text="@string/chupan"
         />
     <Button
+        android:background="@color/first_fragment_button"
         android:id="@+id/nine"
         android:layout_columnWeight="0.25"
         android:layout_rowWeight="0.25"
@@ -95,6 +105,7 @@
         android:layout_height="0dp"
         android:text="@string/li"/>
     <Button
+        android:background="@color/first_fragment_button"
         android:id="@+id/ten"
         android:layout_columnWeight="0.25"
         android:layout_rowWeight="0.25"
@@ -102,6 +113,7 @@
         android:layout_height="0dp"
         android:text="@string/cailiao"/>
     <Button
+        android:background="@color/first_fragment_button"
         android:id="@+id/elven"
         android:layout_columnWeight="0.25"
         android:layout_rowWeight="0.25"
@@ -109,6 +121,7 @@
         android:layout_height="0dp"
         android:text="@string/jichu"/>
     <Button
+        android:background="@color/first_fragment_button"
         android:id="@+id/twelve"
         android:layout_columnWeight="0.25"
         android:layout_rowWeight="0.25"
@@ -116,6 +129,7 @@
         android:layout_height="0dp"
         android:text="@string/jixu"/>
     <Button
+        android:background="@color/first_fragment_button"
         android:id="@+id/thirteen"
         android:layout_columnWeight="0.25"
         android:layout_rowWeight="0.25"
@@ -123,6 +137,7 @@
         android:layout_height="0dp"
         android:text="@string/gongji"/>
     <Button
+        android:background="@color/first_fragment_button"
         android:id="@+id/foutteen"
         android:layout_columnWeight="0.25"
         android:layout_rowWeight="0.25"
@@ -130,6 +145,7 @@
         android:layout_height="0dp"
         android:text="@string/zhonyin"/>
     <Button
+        android:background="@color/first_fragment_button"
         android:id="@+id/fifteen"
         android:layout_columnWeight="0.25"
         android:layout_rowWeight="0.25"
@@ -137,6 +153,7 @@
         android:layout_height="0dp"
         android:text="@string/zhonde"/>
     <Button
+        android:background="@color/first_fragment_button"
         android:id="@+id/sixteen"
         android:layout_columnWeight="0.25"
         android:layout_rowWeight="0.25"
@@ -144,6 +161,7 @@
         android:layout_height="0dp"
         android:text="@string/sheke"/>
     <Button
+        android:background="@color/first_fragment_button"
         android:text="@string/tiyu"
         android:id="@+id/seventeen"
         android:layout_columnWeight="0.25"
@@ -151,6 +169,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"/>
     <Button
+        android:background="@color/first_fragment_button"
         android:text="@string/yinyue"
         android:id="@+id/eighteen"
         android:layout_columnWeight="0.25"
@@ -158,17 +177,20 @@
         android:layout_width="0dp"
         android:layout_height="0dp"/>
     <Button
+        android:background="@color/first_fragment_button"
         android:text="@string/hujiang"
         android:id="@+id/nineteen"
         android:layout_columnWeight="0.25"
         android:layout_rowWeight="0.25"
         android:layout_width="0dp"
         android:layout_height="0dp"/>
-    <Button android:id="@+id/twenty"
-            android:text="@string/taikezi"
-            android:layout_columnWeight="0.25"
-            android:layout_rowWeight="0.25"
-            android:layout_width="0dp"
-            android:layout_height="0dp"/>
+    <Button
+        android:background="@color/first_fragment_button"
+        android:id="@+id/twenty"
+        android:text="@string/taikezi"
+        android:layout_columnWeight="0.25"
+        android:layout_rowWeight="0.25"
+        android:layout_width="0dp"
+        android:layout_height="0dp"/>
 </GridLayout>
 </LinearLayout>
