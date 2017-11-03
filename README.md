@@ -20,5 +20,5 @@ ShareBook提供给所有校园内的学生一个平台,可以将自己的教材�
 4. [OkHttp3](https://github.com/square/okhttp)
 5. [Glide](https://github.com/bumptech/glide)
 6. [LitePal](https://github.com/LitePalFramework/LitePal)
-7. [easypermissions](https://github.com/googlesamples/easypermissions)
+7. [easypermissions](https://github.com/googlesamples/easypermissions)  
 .........
