@@ -2,6 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="usst.edu.cn.sharebooks">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!-- 向SDCard读写数据权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!-- 相机权限-->
+    <uses-permission android:name="android.permission.CAMERA"/>
     <application
         android:name=".ShareApplication"
         android:allowBackup="true"
@@ -10,6 +20,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
 
         <activity
             android:theme="@style/Theme.AppStartLoad"
@@ -23,9 +43,36 @@
 
         </activity>
 
-        <activity android:name=".ui.activity.SearchActivity"/>
+        <activity android:name=".ui.activity.LoginActivity"/>
 
-        <activity android:name=".ui.activity.Title_Activity"/>
+        <activity android:name=".ui.activity.BookStallActivity"/>
+
+        <activity android:name=".ui.activity.SearchResultActivity"/>
+
+        <activity android:name=".ui.activity.SearchBookDetailActivity"
+            android:theme="@style/SearchBookDetailActivityStyle"
+            />
+
+        <activity android:name=".ui.activity.UserSettingActivity" />
+
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+
+        <activity android:name=".ui.activity.DonateStallActivity"/>
+
+        <activity android:name=".ui.activity.OrderBookActivity"/>
+
+        <activity android:name=".ui.activity.OrderDetailActivity"/>
+
+        <activity android:name=".ui.activity.OrderFinishedActivity"/>
+
+        <activity android:name=".ui.activity.UserSellStallListActivity"/>
+
+        <activity android:name=".ui.activity.NormalBookDetailActivity"/>
+
     </application>
+
 
 </manifest>

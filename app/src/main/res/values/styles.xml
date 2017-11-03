@@ -3,19 +3,100 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorAccent">@color/material_green_A200</item>
-        <item name="colorPrimaryDark">@color/accent_material_light</item>
-        <item name="colorPrimary">@color/accent_material_dark</item>
-        <item name="android:windowBackground">@color/dim_foreground_material_dark</item>
+        <item name="colorAccent">@color/material_blue_500</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
     </style>
 
+    <style name="SearchBookDetailActivityStyle" parent="AppTheme">
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+
     <style name="Theme.AppStartLoad" parent="AppTheme">
-        <item name="android:windowBackground">@drawable/splash</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowIsTranslucent">true</item>
     </style>
 
+    <style name="TabLayoutTextStyle">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="MenuLabelsStyle">
+        <item name="android:background">@drawable/fab_label_background</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="MenuButtonStyle11">
+        <item name="fab_size">mini</item>
+        <item name="fab_showAnimation">@anim/jump_from_down</item>
+        <item name="fab_hideAnimation">@anim/jump_to_down</item>
+        <item name="fab_shadowColor">#444</item>
+        <item name="fab_colorNormal">#ff57bb8a</item>
+        <item name="fab_colorPressed">#ff0f9d58</item>
+        <item name="fab_colorRipple">#ff0b8043</item>
+    </style>
+
+    <style name="MenuButtonStyle12">
+        <item name="fab_size">mini</item>
+        <item name="fab_showAnimation">@anim/jump_from_down</item>
+        <item name="fab_hideAnimation">@anim/jump_to_down</item>
+        <item name="fab_shadowColor">#444</item>
+        <item name="fab_colorNormal">#fff4b400</item>
+        <item name="fab_colorPressed">#fff09300</item>
+        <item name="fab_colorRipple">#ffffcd40</item>
+    </style>
+
+    <style name="MenuButtonStyle21">
+        <item name="fab_size">mini</item>
+        <item name="fab_showAnimation">@anim/scale_up</item>
+        <item name="fab_hideAnimation">@anim/scale_down</item>
+        <item name="fab_shadowColor">#444</item>
+        <item name="fab_colorNormal">@color/material_blue_300</item>
+        <item name="fab_colorPressed">@color/material_blue_500</item>
+        <item name="fab_colorRipple">@color/material_blue_700</item>
+    </style>
+
+    <style name="MenuButtonStyle22">
+        <item name="fab_size">mini</item>
+        <item name="fab_showAnimation">@anim/scale_up</item>
+        <item name="fab_hideAnimation">@anim/scale_down</item>
+        <item name="fab_shadowColor">#444</item>
+        <item name="fab_colorNormal">@color/material_red_300</item>
+        <item name="fab_colorPressed">@color/material_red_500</item>
+        <item name="fab_colorRipple">@color/material_red_700</item>
+    </style>
+    
+    <style name="loading_dialog_style" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
 
 
+    <style name="textToolbarTitle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">#d3d3d3</item>
+    </style>
+
+    <style name="txt_settingsex_pop_menu">
+        <!-- PopupWindow左右弹出的效果 -->
+        <item name="android:textColor">@color/settingsex_pop_normal</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="AnimBottom" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
+    </style>
 </resources>

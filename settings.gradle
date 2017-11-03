@@ -1,1 +1,1 @@
-include ':app', ':design_view'
+include ':app'

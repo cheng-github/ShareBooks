@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        >
+        <Button
+            android:id="@+id/bt_female"
+            style="@style/txt_settingsex_pop_menu"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/button_selector"
+            android:textSize="18sp"
+            android:text="@string/s_female"
+            />
+        <Button
+            android:id="@+id/bt_male"
+            style="@style/txt_settingsex_pop_menu"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/button_selector"
+            android:textSize="18sp"
+            android:text="@string/s_male"
+            />
+        <Button
+            android:id="@+id/bt_cancel"
+            style="@style/txt_settingsex_pop_menu"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/button_selector"
+            android:textSize="18sp"
+            android:text="@string/s_cancel"
+            />
+    </LinearLayout>
+
+</RelativeLayout>

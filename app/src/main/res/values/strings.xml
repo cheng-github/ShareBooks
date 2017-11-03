@@ -1,10 +1,74 @@
 <resources>
     <string name="app_name">BookShare</string>
+    <string name="app_description">app_createdBy</string>
     <string name="splash_text">跳过</string>
-    <string name="hello_world">小伟，GO！GO！GO！</string>
     <string name="action_settings">设置</string>
-    <string name="search_hint">请输入搜索关键字</string>
-    
+    <string name="login">登 录</string>
+    <string name="username">用户名</string>
+    <string name="password">密码</string>
+    <string name="go">GO</string>
+    <string name="forget_password">Forget your password?</string>
+    <string name="register">注 册</string>
+    <string name="cancel_register">cancel</string>
+    <string name="ensurePassWord">再次输入密码</string>
+    <string name="nickName">昵称</string>
+    <string name="registerInfo">账号密码由6-15位字母数字下划线组成</string>
+    <string name="s_mylib">我的书摊</string>
+    <string name="s_donate">贡献书籍</string>
+    <string name="s_getbook">获取的书籍</string>
+    <string name="s_orbook">个人订单</string>
+    <string name="s_bookstallNoBook">没有任何书籍\n   T_T</string>
+    <string name="s_localBook">未上传:</string>
+    <string name="s_yunbook">书摊:</string>
+    <string name="s_jiaocai">教材</string>
+    <string name="s_qita">其它书籍</string>
+    <string name="s_jianjie">内容简介:</string>
+    <string name="s_neitontest">本书是教育部推荐教材，高等学校金融学专业系列教材。 本书在2009年第三版的基础上，作了较多的修改补充，再版而成。本书主要介绍了证券投资活动的构成要素、证券市场的管理与运行机制、证券交易的程序与方式、证券投资的收益与风险、证券投资对象的选择、证券投资的基本分析、证券投资的技术分析以及现代证券投资理论等内容。本书的特点是，既阐述了发达国家证券市场的一般规律和成熟经验，又介绍了我国证券市场的现行体制；既阐述了现代投资理论，又介绍了具体实用的投资分析</string>
+    <string name="s_delete">删除</string>
+    <string name="s_searchtitle">搜索结果</string>
+    <string name="s_jj">简介:</string>
+    <string name="s_addsellbook">添加</string>
+    <string name="s_bookdetail">书籍详情</string>
+    <string name="s_sellstalldes">书摊介绍:</string>
+    <string name="s_nickname">昵称</string>
+    <string name="s_sex">性别</string>
+    <string name="s_stalldes">书摊描述</string>
+    <string name="s_xueyuan">学院</string>
+    <string name="s_contactway">联系方式</string>
+    <string name="s_personalinfo">我的信息</string>
+    <string name="s_touxiang">头像</string>
+    <string name="s_yonghuming">用户名</string>
+    <string name="s_labelok">允许</string>
+    <string name="s_labelcancel">不允许</string>
+    <string name="s_permission_title_rationale">需要权限</string>
+    <string name="permission_read_storage_rationale">获取相册文件需要权限</string>
+    <string name="label_select_picture">Select Picture</string>
+    <string name="s_updatenickname">修改昵称</string>
+    <string name="s_tishinickname">请输入昵称</string>
+    <string name="s_ensure">确定</string>
+    <string name="s_female">女</string>
+    <string name="s_male">男</string>
+    <string name="s_cancel">取消</string>
+    <string name="s_addstalldes">添加书摊描述</string>
+    <string name="s_speaksomething">说点什么吧..(ﾉ◕ヮ◕)ﾉ*:･ﾟ✧</string>
+    <string name="s_donatebook">贡献的书籍</string>
+    <string name="s_donatejiaocai">贡献教材</string>
+    <string name="s_donateotherbooks">贡献其它书籍</string>
+    <string name="s_donater">贡献者:</string>
+    <string name="s_jiaoyishibai">失败</string>
+    <string name="s_jiaoyichenggong">成功</string>
+    <string name="s_shujimingchen">书籍名称:</string>
+    <string name="s_author">作者:</string>
+    <string name="s_pressversion">出版社&amp;&amp;版本:</string>
+    <string name="s_orderdatetime">订单日期:</string>
+    <string name="s_contactme">联系我</string>
+    <string name="s_ordercontactway">联系方式:</string>
+    <string name="s_myxueyuan">所属学院:</string>
+    <string name="s_orderbook">预订</string>
+    <string name="s_allorders">所有订单</string>
+    <string name="s_orderdetail">订单详情</string>
+    <string name="camera_and_writedoc">拍照需要相机及文件权限</string>
+    <string name="s_personalstall">书摊详情</string>
     <!-- 下面是主界面学院的名称-->
     <string name="guangdian">光电学院</string>
     <string name="nengdong">能动学院</string>
@@ -32,4 +96,7 @@
 
     <!-- 这里将要写我的信息的字符串内容-->
     <string name="myinf">这里将要写我的信息的字符串内容</string>
+
+    <!-- 测试一个随意的标签-->
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur magna tortor, semper eu feugiat eu, vehicula vitae lacus.</string>
 </resources>

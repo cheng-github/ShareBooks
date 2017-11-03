@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_layout"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:minHeight="60dp"
+    android:minWidth="160dp"
+    android:padding="10dp"
+    android:gravity="center"
+    android:background="@drawable/loadingdialog_shape"
+    >
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/av_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:indicatorName="TriangleSkewSpinIndicator"
+        android:layout_gravity="center"
+        app:indicatorColor="#1390ea"
+        />
+    <TextView
+        android:id="@+id/tv_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:textColor="@color/brown_500"
+        android:textSize="13sp"
+        android:textAlignment="center"
+        android:layout_marginStart="2dp"
+        tools:text="加载中..."
+        />
+
+</LinearLayout>
