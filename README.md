@@ -13,9 +13,6 @@ ShareBook提供给所有校园内的学生一个平台,可以将自己的教材�
 
 目前我的数据库里只录入了[我们学校(USST)](http://www.usst.edu.cn/)的所有教材,其中不包括大一的教材。(这个考虑到实际功能的运用，也不会涉及到大一的教材，所以并未录入。)如果出现数据谬误的情况欢迎联系我。q:3419773387或者Email:cheng_deeplove@163.com or spirit.swc@gmail.com
 
-## 二、使用的开源库  
-  * [RxJava](https://github.com/ReactiveX/RxJava)  
-  * [RxAndroid](https://github.com/ReactiveX/RxAndroid)  
-  * [RxLifecycle for using RxJava](https://github.com/trello/RxLifecycle)  
-  * [Retrofit](https://github.com/square/retrofit)  
-  * [OkHttp](https://github.com/square/okhttp)  
+## 二、使用的开源库
+1 [RxJava ](https://github.com/ReactiveX/RxJava)
+
