@@ -21,7 +21,7 @@ ShareBook提供给所有校园内的学生一个平台,可以将自己的教材�
 5. [Glide](https://github.com/bumptech/glide)
 6. [LitePal](https://github.com/LitePalFramework/LitePal)
 7. [easypermissions](https://github.com/googlesamples/easypermissions)
-8. [感谢豆瓣提供图书的搜索](https://developers.douban.com/wiki/?title=book_v2#get_book_search)
+8. [感谢豆瓣提供图书的搜索](https://developers.douban.com/wiki/?title=book_v2#get_book_search)  
 .........  
 ## 三、....
  
