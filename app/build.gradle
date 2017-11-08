@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 26
+    buildToolsVersion '26.0.2'
     aaptOptions {
         cruncherEnabled = false
         useNewCruncher = false
@@ -10,7 +10,7 @@ android {
     defaultConfig {
         applicationId "usst.edu.cn.sharebooks"
         minSdkVersion 21
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         dataBinding {
