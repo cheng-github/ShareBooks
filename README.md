@@ -27,4 +27,25 @@ ShareBook提供给所有校园内的学生一个平台,可以将自己的教材�
 .........  
 ## 三、运行截图演示
  * 登录注册  
-  ![登录注册](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/login.gif)
+ 
+  ![登录注册](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/login.gif)  
+  
+* 预订免费书籍  
+
+  ![预订免费书籍](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/yuding1.gif)  
+* 预订书摊书籍  
+
+  ![预订书摊书籍](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/yuding2.gif)  
+  
+* 添加免费书籍  
+
+  ![添加免费书籍](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/uploadfree.gif)  
+  
+* 添加书摊书籍  
+
+  ![添加书摊书籍](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/uploadsell.gif)  
+
+* 修改个人信息  
+
+  ![修改个人信息](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/xiugai.gif)
+ 
