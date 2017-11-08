@@ -27,4 +27,4 @@ ShareBook提供给所有校园内的学生一个平台,可以将自己的教材�
 .........  
 ## 三、运行截图演示
  * 登录注册  
- !(image)[https://github.com/cheng-github/ShareBooks/blob/master/screenshots/login.gif]
+  !(image)[https://github.com/cheng-github/ShareBooks/blob/master/screenshots/login.gif]
