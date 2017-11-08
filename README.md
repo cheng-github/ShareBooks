@@ -44,11 +44,10 @@ ShareBook提供给所有校园内的学生一个平台,可以将自己的教材�
 
   ![修改个人信息](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/xiugai.gif)  
 ## 四、ToDoList
+- [ ] 以书换书功能
+- [ ] 订单的界面
+- [ ] 书籍推荐
 
- <div>
-  <input name="以书换书功能" type="checkbox" value="false"/>  
-  <input name="订单的界面" type="checkbox" value="false"/>  
- </div>
 
 
  
