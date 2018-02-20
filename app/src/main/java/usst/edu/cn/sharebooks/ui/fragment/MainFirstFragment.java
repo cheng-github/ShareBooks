@@ -10,10 +10,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.trello.rxlifecycle2.android.FragmentEvent;
+
+import io.reactivex.functions.Action;
+import io.reactivex.functions.Consumer;
 import usst.edu.cn.sharebooks.R;
 import usst.edu.cn.sharebooks.base.BaseFragment;
+import usst.edu.cn.sharebooks.model.articlelist.ArticleIDList;
 import usst.edu.cn.sharebooks.model.user.User;
+import usst.edu.cn.sharebooks.network.RetrofitSingleton;
 import usst.edu.cn.sharebooks.ui.adapter.FirstPagerAdapter;
+import usst.edu.cn.sharebooks.util.RxUtil;
 
 /**
  * 主界面的viewpager每个fragment的加载
@@ -26,6 +34,7 @@ public class MainFirstFragment extends BaseFragment{
     ViewPager mViewPager;
     TabLayout mTabLayout;
     private User user;
+    private static boolean isLoad = true;
 
     public MainFirstFragment(){
         Log.i("TestLifeCycle","..................MainFirstFragment()构造方法...............");
@@ -78,7 +87,9 @@ public class MainFirstFragment extends BaseFragment{
 
     @Override
     protected void loadWhenVisible() {
-
+        if (isLoad){
+            isLoad = false;
+        }
     }
 
     @Override

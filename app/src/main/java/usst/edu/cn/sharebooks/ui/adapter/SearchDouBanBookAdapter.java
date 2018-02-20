@@ -96,7 +96,8 @@ public class SearchDouBanBookAdapter extends RecyclerView.Adapter {
             }
            // Log.i("TestDouBanData","调用了外部并且length="+douBanBook.author.length);
             if (allAuthorName.length() != 0)
-            allAuthorName.deleteCharAt(allAuthorName.length()-1);   //这里居然会出现空指针  说index = -1 !?
+            allAuthorName.deleteCharAt(allAuthorName.length()-1);
+            //这里居然会出现空指针  说index = -1 !?
             //调试之后居然发现  还有  author为0的情况....
             //大于等于1代表有翻译的人
             if (douBanBook.translator.length == 1){

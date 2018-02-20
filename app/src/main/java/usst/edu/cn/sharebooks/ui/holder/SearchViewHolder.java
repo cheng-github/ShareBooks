@@ -60,7 +60,6 @@ public class SearchViewHolder implements View.OnClickListener{
                     mClearView.setVisibility(View.INVISIBLE);
                 }
             }
-
             @Override
             public void afterTextChanged(Editable s) {
 

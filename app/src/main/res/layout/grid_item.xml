@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.daimajia.swipe.SwipeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/swipe"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff">
+    <LinearLayout
+        android:background="@color/colorPrimary"
+        android:layout_width="80dp"
+        android:layout_gravity="right"
+        android:gravity="center"
+        android:layout_height="105dp">
+        <ImageView
+            android:id="@+id/trash"
+            android:src="@drawable/star"
+            android:layout_width="80dp"
+            android:layout_height="22dp" />
+    </LinearLayout>
+<!--最后一个子布局是Surface View 其它的根据layout_gravity判断bottomViews的位置-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/brown_500"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/brown_500"
+            android:textSize="16sp" />
+    </LinearLayout>
+</com.daimajia.swipe.SwipeLayout>

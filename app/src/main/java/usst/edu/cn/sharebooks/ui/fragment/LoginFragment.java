@@ -53,7 +53,6 @@ public class LoginFragment extends BaseFragment {
     }
 
     private void initView(){
-
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

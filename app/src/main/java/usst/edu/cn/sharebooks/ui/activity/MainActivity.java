@@ -16,16 +16,20 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.trello.rxlifecycle2.android.ActivityEvent;
+import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import io.reactivex.annotations.NonNull;
+import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import usst.edu.cn.sharebooks.R;
 import usst.edu.cn.sharebooks.base.BaseActivity;
 import usst.edu.cn.sharebooks.component.RxBus;
+import usst.edu.cn.sharebooks.model.articlelist.ArticleIDList;
 import usst.edu.cn.sharebooks.model.event.OpenNormalBookDetailEventForDonate;
 import usst.edu.cn.sharebooks.model.event.OpenSellStallDetailEvent;
 import usst.edu.cn.sharebooks.model.event.UpdateUserInfoEvent;
 import usst.edu.cn.sharebooks.model.user.User;
+import usst.edu.cn.sharebooks.network.RetrofitSingleton;
 import usst.edu.cn.sharebooks.ui.adapter.MainFragmentAdapter;
 import usst.edu.cn.sharebooks.util.RxUtil;
 
@@ -39,6 +43,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     public User mUser;
     private TextView mToolBarTitle;
     private MainFragmentAdapter adapter;
+    public ArticleIDList articleIDLists;
 
     @Override
     protected void onCreate(Bundle savedIntance){
@@ -74,6 +79,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 .compose(RxUtil.<OpenNormalBookDetailEventForDonate>io())
                 .compose(bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribe();
+        loadData();//加载数据
         super.onCreate(savedIntance);
         Log.i("TestLifeCycle","............onCreate()..............MainActivity");
         setContentView(R.layout.activity_main);
@@ -82,10 +88,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         setupViewPager();
         //如果是首次启动应用,不是旋转屏幕什么的
         if (savedIntance == null){
-            mPageIndex = 0;
-            updateBottomButtons(mPageIndex);
-        }
+        mPageIndex = 0;
+        updateBottomButtons(mPageIndex);
     }
+}
 
     private void initData(){
         mUser = (User)getIntent().getSerializableExtra("userInfo");
@@ -109,13 +115,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     private void  setupViewPager(){
         mViewPager = (ViewPager)findViewById(R.id.viewpager);
-        adapter  = new MainFragmentAdapter(getSupportFragmentManager(),mUser,MainActivity.this);
+        adapter  = new MainFragmentAdapter(getSupportFragmentManager(),MainActivity.this,mUser,articleIDLists);
         mViewPager.setAdapter(adapter);
         //太坑爹了，只要在这个adapter里面设置了那个重写方法返回了fragment之后  你使用什么
         //adapter.getItem()无论怎么转型都是不起作用的
         //所以以后最好还是不要使用这种在adapter里面写死的方式
         //简直有毒
-
         adapter.notifyDataSetChanged();
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -135,6 +140,32 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
             }
         });
 
+    }
+
+    private void loadData(){
+        //加载文章提前需要的ID数据
+        RetrofitSingleton.getInstance().getArticleIDList()
+                .doOnError(new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        Log.i("Error","获取文章ID列表出错");
+                    }
+                })
+                .doOnNext(new Consumer<ArticleIDList>() {
+                    @Override
+                    public void accept(ArticleIDList articleIDList) throws Exception {
+                        for (String i:articleIDList.data)
+                            Log.i("TestArticle",i+"\n");
+                        articleIDLists = articleIDList;
+                    }
+                })
+                .doOnComplete(new Action() {
+                    @Override
+                    public void run() throws Exception {
+                    }
+                })
+                .compose(this.bindUntilEvent(ActivityEvent.DESTROY))
+                .subscribe();
     }
 
     @Override
@@ -158,9 +189,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onClick(View v) {
-       switch (v.getId()){
+           @Override
+           public void onClick(View v) {
+               switch (v.getId()){
             case R.id.tab_bottom_first:
                 mViewPager.setCurrentItem(0);
                 break;
@@ -170,7 +201,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
            case R.id.tab_bottom_third:
                mViewPager.setCurrentItem(2);
                break;
-        }
+          }
     }
     //这个方法用于为底部的按钮设置颜色
     private void updateBottomButtons(int pos){
@@ -233,8 +264,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     protected void onStart() {
         super.onStart();
         Log.i("TestLifeCycle","...........onStart()...........MainActivity");
-        //为了避免rxbus重复订阅  这个rxbus的使用不能丢在 onStart()里面  而要放在onCreate()里面  因为每次都会产生 onStart()与onResume()
-        //所以 我一直都是在瓜皮的使用rxbus.....
+        //为了避免xbus重复订阅  这个rxbus的使用不能丢在 onStart()里面  而要放在onCreate()里面  因为每次都会产生 onStart()与onResume()
+        //所以 我一直都是在瓜皮的使用rxbus.....r
     }
 
     @Override

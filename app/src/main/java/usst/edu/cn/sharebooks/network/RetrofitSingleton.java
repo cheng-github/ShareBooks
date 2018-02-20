@@ -20,14 +20,16 @@ import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import usst.edu.cn.sharebooks.BuildConfig;
 import usst.edu.cn.sharebooks.Constants;
 import usst.edu.cn.sharebooks.ShareApplication;
+import usst.edu.cn.sharebooks.model.articlelist.ArticleHeader.SimpleArticle;
+import usst.edu.cn.sharebooks.model.articlelist.ArticleIDList;
 import usst.edu.cn.sharebooks.model.donate.AllAvailableBook;
 import usst.edu.cn.sharebooks.model.donate.DeleteDonateBookResponse;
 import usst.edu.cn.sharebooks.model.donate.UserAddDonateBookResponse;
 import usst.edu.cn.sharebooks.model.donate.UserPersonalDonateStallResponse;
 import usst.edu.cn.sharebooks.model.douban.DouBanResponse;
-import usst.edu.cn.sharebooks.model.event.UpdateUserOtherInfo;
 import usst.edu.cn.sharebooks.model.order.OrderBookActionResponse;
 import usst.edu.cn.sharebooks.model.order.OrderDealResultResponse;
 import usst.edu.cn.sharebooks.model.order.PersonalOrderResponse;
@@ -100,7 +102,9 @@ public class RetrofitSingleton {
             }
         };
         builder.cache(cache).addInterceptor(cacheInterceptor);
-        builder.addNetworkInterceptor(new StethoInterceptor()); //添加facebook的网络debug框架
+        if (BuildConfig.DEBUG){
+            builder.addNetworkInterceptor(new StethoInterceptor()); //添加facebook的网络debug框架
+        }
         //设置超时
         builder.connectTimeout(15, TimeUnit.SECONDS);
         builder.readTimeout(20, TimeUnit.SECONDS);
@@ -220,4 +224,12 @@ public class RetrofitSingleton {
         return sApiInterface.loadOneUserAllSellBook(1,userId)
                 .compose(RxUtil.<OneUserSellStallResponse>io());
     }
+
+    public Observable<ArticleIDList> getArticleIDList(){
+        return sApiInterface.getArticleIDList().compose(RxUtil.<ArticleIDList>io());
+    }
+
+    public Observable<SimpleArticle> loadArticleHeader(String item_id){
+        return sApiInterface.loadArticleHeader(item_id).compose(RxUtil.<SimpleArticle>io());
+    };
 }

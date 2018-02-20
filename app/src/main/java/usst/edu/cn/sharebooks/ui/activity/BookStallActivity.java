@@ -235,9 +235,9 @@ public class BookStallActivity extends BaseActivity {
       }
        if (holder != null){
             if (SEARCH_CATEGORY == SEARCH_JIACAO){
-                holder.mSearchContent.setHint("搜索教材书名丶作者");
+                holder.mSearchContent.setHint("搜索教材书名、作者");
             }else {
-                holder.mSearchContent.setHint("搜索书籍书名丶作者丶ISBN");
+                holder.mSearchContent.setHint("搜索书籍书名、作者、ISBN");
             }
        }
       KeyBoardUtils.openKeyBord(holder.mSearchContent,BookStallActivity.this);

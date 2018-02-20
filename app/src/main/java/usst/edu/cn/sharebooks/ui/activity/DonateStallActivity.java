@@ -232,7 +232,6 @@ public class DonateStallActivity extends BaseActivity {
                     animator.start();
                 }
             });
-
         }
         if (holder != null){
             if (SEARCH_CATEGORY == SEARCH_JIACAO){

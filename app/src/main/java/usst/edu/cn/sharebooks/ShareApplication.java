@@ -17,7 +17,9 @@ public class ShareApplication extends Application {
         super.onCreate();
         sAppContext = getApplicationContext();//这个就是这个Application的单例的引用，不过它使用了多态这种方法表示而已
         LitePal.initialize(this);//初始化数据库
-        Stetho.initializeWithDefaults(this); //使用 facebook网络调试框架
+        if (BuildConfig.DEBUG){
+            Stetho.initializeWithDefaults(this); //使用 facebook网络调试框架
+        }
         if (getApplicationContext().getExternalCacheDir() != null && ExistSDCard()) {
             sCacheDir = getApplicationContext().getExternalCacheDir().toString();
         } else {

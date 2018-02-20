@@ -11,28 +11,36 @@
             android:id="@+id/card_view2"
             android:layout_centerInParent="true"
             android:layout_width="300dp"
-            android:layout_height="400dp"
+            android:layout_height="500dp"
             app:cardBackgroundColor="#eeeeee"
             app:cardCornerRadius="6dp"
             app:cardElevation="3dp"
             >
-
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:layout_gravity="center_horizontal"
-                    android:text="@string/register"
-                    android:textStyle="bold"
-                    android:textSize="16sp"
-                    android:textColor="#795548"
-                    />
-
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:layout_marginTop="10dp">
+                    <View
+                        android:layout_width="8dp"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:background="#795548"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:layout_centerInParent="true"
+                        android:text="@string/register"
+                        android:textStyle="bold"
+                        android:textSize="22sp"
+                        android:textColor="#795548"
+                        />
+                </RelativeLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -137,7 +145,7 @@
                     android:layout_width="150dp"
                     android:layout_height="50dp"
                     android:layout_gravity="center_horizontal"
-                    android:background="@drawable/bt_shape_2"
+                    android:background="@drawable/bt_shape"
                     android:text="@string/register"
                     android:textColor="#d3d3d3"
                     android:id="@+id/ensure"
@@ -166,6 +174,7 @@
             android:src="@drawable/plus_x"
             android:layout_alignTop="@+id/card_view2"
             android:layout_marginEnd="-20dp"
+            android:layout_marginTop="25dp"
             android:layout_alignEnd="@+id/card_view2"
             app:backgroundTint="#795548" />
 

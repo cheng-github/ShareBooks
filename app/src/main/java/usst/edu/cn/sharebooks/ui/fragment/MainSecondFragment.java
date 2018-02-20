@@ -1,47 +1,36 @@
 package usst.edu.cn.sharebooks.ui.fragment;
 
 import android.os.Bundle;
-import android.os.Process;
 import android.support.annotation.Nullable;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.GridView;
 
 import com.trello.rxlifecycle2.android.FragmentEvent;
 
-import java.util.ArrayList;
-import java.util.List;
-import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import usst.edu.cn.sharebooks.R;
 import usst.edu.cn.sharebooks.base.BaseFragment;
-import usst.edu.cn.sharebooks.model.donate.AllAvailableBook;
-import usst.edu.cn.sharebooks.model.donate.GivenBookItem;
+import usst.edu.cn.sharebooks.model.articlelist.ArticleHeader.SimpleArticle;
+import usst.edu.cn.sharebooks.model.articlelist.ArticleIDList;
 import usst.edu.cn.sharebooks.network.RetrofitSingleton;
-import usst.edu.cn.sharebooks.ui.adapter.GivenBookAdapter;
 
 
 public class MainSecondFragment extends BaseFragment {
     private static String Section_Number="section_number";
+    private static boolean isLoad = false;
     private View rootView;
-    private SwipeRefreshLayout mRefreshLayout;
-    private RecyclerView mRecyclerView;
-    private ImageView mImageView;
-    private GivenBookAdapter adapter;
-    //Data
-    List<GivenBookItem> givenBookItems = new ArrayList<>();
+    private GridView mGridView;
+    public ArticleIDList articleIDLists;
 
-    public static MainSecondFragment newInstance(){
+    public static MainSecondFragment newInstance(ArticleIDList articleIDLists){
         MainSecondFragment secondFragment = new MainSecondFragment();
         Bundle args = new Bundle();
         args.putInt(Section_Number,1);
+        args.putSerializable("ArticleID",articleIDLists);
         secondFragment.setArguments(args);
         return secondFragment;
     }
@@ -57,51 +46,43 @@ public class MainSecondFragment extends BaseFragment {
         rootView = inflater.inflate(R.layout.main_acrivity_fragment,container,false);
         if (getArguments().getInt(Section_Number) == 1){
             rootView = inflater.inflate(R.layout.second_fragment,container,false);
-            mRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swiprefresh);
-            mRecyclerView = (RecyclerView)rootView.findViewById(R.id.recyclerview);
-            mImageView = (ImageView)rootView.findViewById(R.id.iv_erro);
+            this.articleIDLists = (ArticleIDList) getArguments().getSerializable("ArticleID");
         }
         return rootView;
     }
 
-    //这个方法是在view layout视图加载后才调用的，也就是 onCreateView(...)方法之后
-    //无返回值
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         Log.i("TestLifeCycle","onViewCreated() from MainSecondFragment");
-        initView();//是否在调用这个方法前加判断??
     }
 
-    private void initView(){
-        if (mRefreshLayout != null){
-            //设置加载的动态颜色
-            mRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
-                    android.R.color.holo_green_light,
-                    android.R.color.holo_orange_light,
-                    android.R.color.holo_red_light);
-            mRefreshLayout.setOnRefreshListener(
-                    new SwipeRefreshLayout.OnRefreshListener() {
-                        @Override
-                        public void onRefresh() {
-                            mRefreshLayout.postDelayed(new Runnable() {
-                                @Override
-                                public void run() {
-                                //    load();//匿名内部类可以自由的调用其外部类的方法
-                                }
-                            },1000);
-                        }
-                    });
-        }
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        //adapter = new GivenBookAdapter(givenBookItems);
-        adapter = new GivenBookAdapter(new GivenBookAdapter.OrderAction() {
-            @Override
-            public void order(GivenBookItem item) {
 
-            }
-        });
-        mRecyclerView.setAdapter(adapter);
+    private void loadData(){
+        //加载每一个文章的标题，作者，图片，以及第一段文字,以及对于每一篇文章我们需要的id,这个id是用于获取文章的具体内容
+        //我们仅仅加载三篇文章的内容,不需要太多，太多好像没有特别大的意义
+        //首先先测试一个文章头部的加载
+        RetrofitSingleton.getInstance().loadArticleHeader(articleIDLists.data[0])
+                .doOnError(new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        Log.e("Error","加载文章头部出错");
+                    }
+                })
+                .doOnNext(new Consumer<SimpleArticle>() {
+                    @Override
+                    public void accept(SimpleArticle simpleArticle) throws Exception {
+                        Log.i("TestArticle",simpleArticle.data.date);
+                    }
+                })
+                .doOnComplete(new Action() {
+                    @Override
+                    public void run() throws Exception {
+                        //加载文章完成
+                    }
+                })
+                .compose(this.bindUntilEvent(FragmentEvent.DESTROY))
+                .subscribe();
     }
 
     @Override
@@ -109,6 +90,10 @@ public class MainSecondFragment extends BaseFragment {
            Log.i("TestLifeCycle","loadWhenVisible()");
 //            load("all","all");
  //       RxBus.getInstance().post(new ChangeTitleEvent());
+        if (!isLoad){
+            isLoad = true;
+        }
+        loadData();
     }
 
 }

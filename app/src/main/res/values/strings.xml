@@ -6,8 +6,8 @@
     <string name="login">登 录</string>
     <string name="username">用户名</string>
     <string name="password">密码</string>
-    <string name="go">GO</string>
-    <string name="forget_password">Forget your password?</string>
+    <string name="go">确认</string>
+    <string name="forget_password">忘记密码?</string>
     <string name="register">注 册</string>
     <string name="cancel_register">cancel</string>
     <string name="ensurePassWord">再次输入密码</string>
