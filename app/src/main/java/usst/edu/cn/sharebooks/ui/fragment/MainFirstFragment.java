@@ -31,10 +31,10 @@ import usst.edu.cn.sharebooks.util.RxUtil;
 public class MainFirstFragment extends BaseFragment{
     private static String Section_Number="section_number";
     View rootView=null;
-    ViewPager mViewPager;
-    TabLayout mTabLayout;
-    private User user;
-    private static boolean isLoad = true;
+        ViewPager mViewPager;
+        TabLayout mTabLayout;
+        private User user;
+        private static boolean isLoad = true;
 
     public MainFirstFragment(){
         Log.i("TestLifeCycle","..................MainFirstFragment()构造方法...............");

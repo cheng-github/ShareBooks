@@ -36,19 +36,19 @@ import usst.edu.cn.sharebooks.model.user.UpdateUserInfoResponse;
 
 public interface ApiInterface {
 
-      String HOST = "http://192.168.1.102:8080/ShareBookProject_1.0/";
+      String HOST = "http://192.168.1.104:8080/ShareBookProject_1.0/";
 //    String HOST = "http://101.132.129.234/ShareBookProject_1.0/";
    //  这里这个Host不能写localhost,而必须写电脑的Ipv4的地址
     //这样  我们终于访问上server了
-   String BookImageBaseURL = "http://192.168.1.102:8080/ShareBookProject_1.0/images/";
+   String BookImageBaseURL = "http://192.168.1.104:8080/ShareBookProject_1.0/images/";
  //    String BookImageBaseURL = "http://101.132.129.234/ShareBookProject_1.0/images/";
 
     //  所有教材图片的访问基本地址
-         String AllBookImageUrl = "http://192.168.1.102:8080/ShareBookProject_1.0/allimages/";
+         String AllBookImageUrl = "http://192.168.1.104:8080/ShareBookProject_1.0/allimages/";
 
 //     String AllBookImageUrl = "http://101.132.129.234/ShareBookProject_1.0/allimages/";
     //用户头像的基本地址
-        String UserImageUrl = "http://192.168.1.102:8080/userImages/";
+        String UserImageUrl = "http://192.168.1.104:8080/userImages/";
 //     String UserImageUrl = "http://101.132.129.234/userImages/";
 
     //首先获取所有idlist,也就是一个的首页的id,不过需要多次访问来得到多个id,以便我们使用列表的方式来显示出来

@@ -159,6 +159,7 @@ public class MainThirdFragment extends BaseFragment {
     }
 
     private void updateUserInfo(User user){
+        //其实每次修改了用户信息，只修改数据的引用是远远不够的，还要这样每个地方都要手动修改重新调用
         this.mUser = user;
         mNickName.setText(mUser.getNickName());
         if (mUser.getSex().equals("?")){

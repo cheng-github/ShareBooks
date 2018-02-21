@@ -79,13 +79,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 .compose(RxUtil.<OpenNormalBookDetailEventForDonate>io())
                 .compose(bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribe();
-        loadData();//加载数据
         super.onCreate(savedIntance);
         Log.i("TestLifeCycle","............onCreate()..............MainActivity");
         setContentView(R.layout.activity_main);
         initData();
         setupToolbar();
         setupViewPager();
+        loadData();//加载数据
         //如果是首次启动应用,不是旋转屏幕什么的
         if (savedIntance == null){
         mPageIndex = 0;
@@ -115,7 +115,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
     private void  setupViewPager(){
         mViewPager = (ViewPager)findViewById(R.id.viewpager);
-        adapter  = new MainFragmentAdapter(getSupportFragmentManager(),MainActivity.this,mUser,articleIDLists);
+        adapter  = new MainFragmentAdapter(getSupportFragmentManager(),MainActivity.this,mUser);
         mViewPager.setAdapter(adapter);
         //太坑爹了，只要在这个adapter里面设置了那个重写方法返回了fragment之后  你使用什么
         //adapter.getItem()无论怎么转型都是不起作用的
@@ -162,6 +162,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 .doOnComplete(new Action() {
                     @Override
                     public void run() throws Exception {
+                        adapter.getSecondFragment().setArticleIDLists(articleIDLists);
                     }
                 })
                 .compose(this.bindUntilEvent(ActivityEvent.DESTROY))
@@ -229,8 +230,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     private void refreshUserInfo(User mUser){
         Log.i("TestCamera","updateUserInfo(User user)...........from MainFragment.........");
         this.mUser = mUser;
-        adapter.setUser(mUser);
-        adapter.notifyDataSetChanged();
+        //我需要测试一下下面两句到底有没有刷新secondeFragment里的数据
+//        adapter.setUser(mUser);
+//        adapter.notifyDataSetChanged();
+
         //一定要调用adapter 刷新这个数据 否则  虽然在mainActivity里修改了  但是adapter里还是使用的旧的数据
         //而且要调用两句
         Log.i("TestCamera",this.mUser.getNickName());

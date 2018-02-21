@@ -18,8 +18,11 @@ public class MainFragmentAdapter extends FragmentStatePagerAdapter {
     private User user;
     private Context mContext;
     private ArticleIDList articleIDLists;
+    private MainFirstFragment firstFragment;
+    private  MainSecondFragment secondFragment;
+    private MainThirdFragment thirdFragment;
 
-    public MainFragmentAdapter(FragmentManager fragmentManager,Context context,User user,ArticleIDList articleIDLists){
+    public MainFragmentAdapter(FragmentManager fragmentManager,Context context,User user){
         super(fragmentManager);
         this.user = user;
         mContext = context;
@@ -29,14 +32,14 @@ public class MainFragmentAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                MainFirstFragment firstFragment = MainFirstFragment.newInstance(user);
+                firstFragment = MainFirstFragment.newInstance(user);
                 return  firstFragment;
             case 1:
-                MainSecondFragment secondFragment = MainSecondFragment.newInstance(articleIDLists);
+                secondFragment = MainSecondFragment.newInstance();
                 return  secondFragment;
             case 2:
                 //之所以不能刷新数据的原因是  这里 的数据可能没有刷新  我测试一下试一下
-                MainThirdFragment thirdFragment = MainThirdFragment.newInstance(user);
+                thirdFragment = MainThirdFragment.newInstance(user);
                 thirdFragment.setInterface(new MainThirdFragment.Test() {
                     @Override
                     public void test() {
@@ -62,5 +65,17 @@ public class MainFragmentAdapter extends FragmentStatePagerAdapter {
 
     public void setArticleIDLists(ArticleIDList articleIDLists){
         this.articleIDLists = articleIDLists;
+    }
+
+    public MainFirstFragment getFirstFragment() {
+        return firstFragment;
+    }
+
+    public MainSecondFragment getSecondFragment() {
+        return secondFragment;
+    }
+
+    public MainThirdFragment getThirdFragment() {
+        return thirdFragment;
     }
 }
