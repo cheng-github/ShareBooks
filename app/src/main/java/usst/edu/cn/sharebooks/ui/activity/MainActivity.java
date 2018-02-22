@@ -25,6 +25,7 @@ import usst.edu.cn.sharebooks.R;
 import usst.edu.cn.sharebooks.base.BaseActivity;
 import usst.edu.cn.sharebooks.component.RxBus;
 import usst.edu.cn.sharebooks.model.articlelist.ArticleIDList;
+import usst.edu.cn.sharebooks.model.event.OpenArticleDetailEvent;
 import usst.edu.cn.sharebooks.model.event.OpenNormalBookDetailEventForDonate;
 import usst.edu.cn.sharebooks.model.event.OpenSellStallDetailEvent;
 import usst.edu.cn.sharebooks.model.event.UpdateUserInfoEvent;
@@ -77,6 +78,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                     }
                 })
                 .compose(RxUtil.<OpenNormalBookDetailEventForDonate>io())
+                .compose(bindUntilEvent(ActivityEvent.DESTROY))
+                .subscribe();
+        RxBus.getInstance().tObservable(OpenArticleDetailEvent.class)
+                .doOnNext(new Consumer<OpenArticleDetailEvent>() {
+                    @Override
+                    public void accept(OpenArticleDetailEvent openArticleDetailEvent) throws Exception {
+                        openArticleDetailActivity(openArticleDetailEvent.getArticle_id());
+                    }
+                })
                 .compose(bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribe();
         super.onCreate(savedIntance);
@@ -261,6 +271,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         }else {
             startActivity(intent);
         }
+    }
+
+    private void openArticleDetailActivity(String item_id){
+        Intent intent = new Intent(MainActivity.this,ArticleDetailActivity.class);
+        intent.putExtra("ArticleId",item_id);
+        startActivity(intent);
     }
 
     @Override

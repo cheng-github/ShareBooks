@@ -56,6 +56,7 @@ public class FirstPagerSecondFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView();
+        //注意主界面的三个fragment使用的是预加载，所以会出现跳转到第二个界面的时候，会出现一个加载符号
         loadData();
     }
 
@@ -91,7 +92,7 @@ public class FirstPagerSecondFragment extends BaseFragment {
                         if (isManuRefresh){
                             mSwipeRefreshLayout.setRefreshing(true);
                         }else {
-                            DialogUtil.showTriangleDialogForLoading(getActivity(),"加载中...");
+//                            DialogUtil.showTriangleDialogForLoading(getActivity(),"加载中...");
                         }
                     }
                 })
@@ -115,7 +116,7 @@ public class FirstPagerSecondFragment extends BaseFragment {
                         if (isManuRefresh){
                             mSwipeRefreshLayout.setRefreshing(false);
                         }else {
-                            DialogUtil.hideDialogForLoading(getActivity());
+//                            DialogUtil.hideDialogForLoading(getActivity());
                         }
                     }
                 })

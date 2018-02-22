@@ -23,6 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import usst.edu.cn.sharebooks.BuildConfig;
 import usst.edu.cn.sharebooks.Constants;
 import usst.edu.cn.sharebooks.ShareApplication;
+import usst.edu.cn.sharebooks.model.articlelist.ArticleContent.ArticleDetail;
 import usst.edu.cn.sharebooks.model.articlelist.ArticleHeader.SimpleArticle;
 import usst.edu.cn.sharebooks.model.articlelist.ArticleIDList;
 import usst.edu.cn.sharebooks.model.donate.AllAvailableBook;
@@ -232,4 +233,8 @@ public class RetrofitSingleton {
     public Observable<SimpleArticle> loadArticleHeader(String item_id){
         return sApiInterface.loadArticleHeader(item_id).compose(RxUtil.<SimpleArticle>io());
     };
+
+    public Observable<ArticleDetail> loadArticleContent(String item_id){
+        return sApiInterface.loadArticleContent(item_id).compose(RxUtil.<ArticleDetail>io());
+    }
 }

@@ -56,20 +56,20 @@ public class GivenBookAdapter extends RecyclerView.Adapter {
         ((GivenBookViewHolder)holder).bind(allBooks.get(position));//传入对应的书籍信息
     }
 
-    @Override
-    public int getItemCount() {
-        return allBooks.size();
-    }
+        @Override
+        public int getItemCount() {
+            return allBooks.size();
+        }
 
-    class GivenBookViewHolder extends RecyclerView.ViewHolder{
-        private ImageView mImageView;
-        private TextView mBookName;
-        private TextView mAuthorPressVersion;
-        private TextView mBookDesc;
-        private TextView mDonateNickName;
-        private ImageView mSex;
-        private Button mOrder;
-        private CardView mCard;
+        class GivenBookViewHolder extends RecyclerView.ViewHolder{
+            private ImageView mImageView;
+            private TextView mBookName;
+            private TextView mAuthorPressVersion;
+            private TextView mBookDesc;
+            private TextView mDonateNickName;
+            private ImageView mSex;
+            private Button mOrder;
+            private CardView mCard;
 
         public GivenBookViewHolder(View itemView){
             super(itemView);

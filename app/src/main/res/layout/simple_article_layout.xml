@@ -3,12 +3,70 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="0dp">
+    xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="0dp"
+    android:layout_marginTop="3dp"
+    android:layout_marginBottom="3dp"
+    android:layout_centerInParent="true"
+    android:background="#FFFFFF"
+    >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:orientation="vertical"
+        android:padding="8dp"
         >
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:layout_gravity="center"
+            android:text="@string/s_articletop"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:id="@+id/tv_title"
+            tools:text="羽毛"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textSize="15sp"
+            android:id="@+id/tv_author"
+            tools:text="文 / 柳敏"
+            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/test"
+            android:id="@+id/iv_pic"
+            android:contentDescription="123"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textSize="15sp"
+            android:id="@+id/tv_forward"
+            android:lineSpacingExtra="2dp"
+            android:letterSpacing="0.05"
+            tools:text="他们的时间在这里出现了断层，她像是早在未来里走了一遭一样，但这本质上也没什么差别，更没有什么意义"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="5dp"
+            android:textSize="12sp"
+            android:id="@+id/tv_time"
+            tools:text="2018-02-22"
+            />
     </LinearLayout>
 </android.support.v7.widget.CardView>

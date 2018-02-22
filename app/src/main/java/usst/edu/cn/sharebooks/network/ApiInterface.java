@@ -14,6 +14,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import usst.edu.cn.sharebooks.model.articlelist.ArticleContent.ArticleDetail;
 import usst.edu.cn.sharebooks.model.articlelist.ArticleHeader.SimpleArticle;
 import usst.edu.cn.sharebooks.model.articlelist.ArticleIDList;
 import usst.edu.cn.sharebooks.model.donate.AllAvailableBook;
@@ -58,6 +59,10 @@ public interface ApiInterface {
     //获取一天的文章的头部信息，通过rx的操作符我们可以同时进行多个相同的访问
     @GET("http://v3.wufazhuce.com:8000/api/onelist/{item_id}/0?channel=wdj&version=4.0.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=android")
     Observable<SimpleArticle> loadArticleHeader(@Path("item_id") String item_id);
+
+    //获取一篇文章的具体内容
+    @GET("http://v3.wufazhuce.com:8000/api/essay/{item_id}channel=wdj&source=summary&source_id=9245&version=4.0.2&uuid=ffffffff-a90e-706a-63f7-ccf973aae5ee&platform=android")
+    Observable<ArticleDetail> loadArticleContent(@Path("item_id")String item_id);
 
     @GET("GivenBookServlet")
     Observable<AllAvailableBook> mGivenBookApi();

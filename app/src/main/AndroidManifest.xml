@@ -71,6 +71,8 @@
 
         <activity android:name=".ui.activity.NormalBookDetailActivity"/>
 
+        <activity android:name=".ui.activity.ArticleDetailActivity"/>
+
     </application>
 
 

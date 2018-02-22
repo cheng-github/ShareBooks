@@ -3,6 +3,8 @@ package usst.edu.cn.sharebooks.ui.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,6 +32,7 @@ import usst.edu.cn.sharebooks.base.BaseFragment;
 import usst.edu.cn.sharebooks.model.articlelist.ArticleHeader.SimpleArticle;
 import usst.edu.cn.sharebooks.model.articlelist.ArticleIDList;
 import usst.edu.cn.sharebooks.network.RetrofitSingleton;
+import usst.edu.cn.sharebooks.ui.adapter.SimpleArticleAdapter;
 
 
 public class MainSecondFragment extends BaseFragment {
@@ -41,6 +44,7 @@ public class MainSecondFragment extends BaseFragment {
     public ArrayList<SimpleArticle> list = new ArrayList<>();
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mRecyclerView;
+    private SimpleArticleAdapter adapter;
 
     //更新articleIDLists
     public void setArticleIDLists(ArticleIDList articleIDLists) {
@@ -96,7 +100,10 @@ public class MainSecondFragment extends BaseFragment {
                         },1000);
                     }
                 });
-
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+//        mRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(),));
+        adapter = new SimpleArticleAdapter();
+        mRecyclerView.setAdapter(adapter);
     }
 
 
@@ -157,18 +164,21 @@ public class MainSecondFragment extends BaseFragment {
                     @Override
                     public void run() throws Exception {
                         Log.i("TestArticle","所有数据加载完毕");
-                        for (SimpleArticle article:list){
-                            for (int i = 0;i<article.data.content_list.length;i++){
-                                if (i == 1){
-                                    Log.i("TestArticle",article.data.content_list[i].item_id);
-                                    Log.i("TestArticle",article.data.content_list[i].title);
-                                    Log.i("TestArticle",article.data.content_list[i].forward);
-                                    Log.i("TestArticle",article.data.content_list[i].img_url);
-                                    if (article.data.content_list[i].author.user_name!=null)
-                                        Log.i("TestArticle",article.data.content_list[i].author.user_name);
-                                }
-                            }
-                        }
+//                        for (SimpleArticle article:list){
+//                            for (int i = 0;i<article.data.content_list.length;i++){
+//                                if (i == 1){
+//                                    Log.i("TestArticle",article.data.content_list[i].item_id);
+//                                    Log.i("TestArticle",article.data.content_list[i].title);
+//                                    Log.i("TestArticle",article.data.content_list[i].forward);
+//                                    Log.i("TestArticle",article.data.content_list[i].img_url);
+//                                    if (article.data.content_list[i].author.user_name!=null)
+//                                        Log.i("TestArticle",article.data.content_list[i].author.user_name);
+//                                }
+//                            }
+//                        }
+                        adapter.setList(list);
+                        adapter.notifyDataSetChanged();
+                        mSwipeRefreshLayout.setRefreshing(false);
                     }
                 })
                 .compose(this.bindUntilEvent(FragmentEvent.DESTROY))
@@ -182,8 +192,8 @@ public class MainSecondFragment extends BaseFragment {
  //       RxBus.getInstance().post(new ChangeTitleEvent());
         if (!isLoad){
             isLoad = true;
+            loadData();
         }
-        loadData();
     }
 
 }
