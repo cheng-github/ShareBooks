@@ -284,7 +284,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         super.onStart();
         Log.i("TestLifeCycle","...........onStart()...........MainActivity");
         //为了避免xbus重复订阅  这个rxbus的使用不能丢在 onStart()里面  而要放在onCreate()里面  因为每次都会产生 onStart()与onResume()
-        //所以 我一直都是在瓜皮的使用rxbus.....r
+        //所以 我一直都是在瓜皮的使用rxbus.....
     }
 
     @Override

@@ -70,6 +70,7 @@
     <string name="camera_and_writedoc">拍照需要相机及文件权限</string>
     <string name="s_personalstall">书摊详情</string>
     <string name="s_articletop">-文 章-</string>
+    <string name="s_end">完</string>
     <!-- 下面是主界面学院的名称-->
     <string name="guangdian">光电学院</string>
     <string name="nengdong">能动学院</string>
