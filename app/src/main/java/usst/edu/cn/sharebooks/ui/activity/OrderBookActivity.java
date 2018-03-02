@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mcxtzhang.swipemenulib.SwipeMenuLayout;
@@ -34,15 +35,16 @@ import usst.edu.cn.sharebooks.ui.view.SpaceItemDecoration;
 import usst.edu.cn.sharebooks.util.DialogUtil;
 
 
-public class OrderBookActivity extends BaseActivity {
-    private User mUser;
-    private Toolbar mToolBar;
-    private SwipeRefreshLayout mSwipeRefreshLayout;
-    private RecyclerView mRecyclerView;
-    private OrderBookAdapter mAdapter;
-    private boolean isManuRefresh = false;
-    private MaterialDialog mMaterialDialog;
-    private boolean autoRefresh = false;
+    public class OrderBookActivity extends BaseActivity {
+        private User mUser;
+        private Toolbar mToolBar;
+        private SwipeRefreshLayout mSwipeRefreshLayout;
+        private RecyclerView mRecyclerView;
+        private OrderBookAdapter mAdapter;
+        private boolean isManuRefresh = false;
+        private MaterialDialog mMaterialDialog;
+        private boolean autoRefresh = false;
+        private View mNotice;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -59,6 +61,7 @@ public class OrderBookActivity extends BaseActivity {
 
     private void initView(){
         setupToolBar();
+        mNotice = findViewById(R.id.notice);
         mSwipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.srl_swiperefresh);
         mSwipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,
@@ -96,7 +99,7 @@ public class OrderBookActivity extends BaseActivity {
             }
         }, OrderBookActivity.this);
         mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.addItemDecoration(new SpaceItemDecoration(30));
+//        mRecyclerView.addItemDecoration(new SpaceItemDecoration(30));  别加这个间距了，加了贼丑
         //设置点击外部关闭
         mRecyclerView.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -195,6 +198,11 @@ public class OrderBookActivity extends BaseActivity {
                     public void accept(@NonNull PersonalOrderResponse personalOrderResponse) throws Exception {
                        mAdapter.setOrderList(personalOrderResponse.orderList);
                        mAdapter.notifyDataSetChanged();
+                       if (personalOrderResponse.orderList.size() == 0){
+                           mNotice.setVisibility(View.VISIBLE);
+                       }else {
+                           mNotice.setVisibility(View.INVISIBLE);
+                       }
                     }
                 })
                 .doOnComplete(new Action() {

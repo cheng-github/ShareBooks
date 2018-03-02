@@ -103,7 +103,7 @@ public class SearchResultActivity extends BaseActivity {
         //recycler view set
         mRecyclerView = (RecyclerView)findViewById(R.id.rv_booklist);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        mRecyclerView.addItemDecoration(new SpaceItemDecoration(30));
+//        mRecyclerView.addItemDecoration(new SpaceItemDecoration(30));
         if (SEARCH_CATEGORY == SEARCH_JIACAO ){
             mAdapter = new SearchJiaoCaiBookAdapter(mUser,this);//这个adapter应该是与这个activity的生命周期绑定在一起的
             //所以这么使用应该是没毛病的

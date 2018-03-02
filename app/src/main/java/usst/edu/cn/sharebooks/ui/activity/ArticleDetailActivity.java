@@ -74,6 +74,7 @@ public class ArticleDetailActivity extends BaseActivity {
                         content.data.hp_content = content.data.hp_content.replaceAll("[<][p][^>]{0,}[>]","");
                         content.data.hp_content = content.data.hp_content.replaceAll("[<][/]{1}[p]{1}[>]","");  //这里主要用于注释掉段落的结尾
                         content.data.hp_content = content.data.hp_content.replaceAll("[<][/br]{0,}[>]","\n");//替换掉换行符<br>或者</br>
+                        content.data.hp_content = content.data.hp_content.replaceAll("[<][/strong]{0,}[>]","");//替换掉可能存在的字体加粗标记
                         mContent.setText(content.data.hp_content);
                     }
                 })

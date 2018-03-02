@@ -55,8 +55,9 @@ public class BookStallActivity extends BaseActivity {
     private FloatingActionButton mFab1;
     private FloatingActionButton mFab2;
     private FloatingActionMenu mFab;
-    private RelativeLayout mBookLayout;
-    private TextView mNotice;
+    //不能设置这个为不可见，会出无法刷新的
+//    private RelativeLayout mBookLayout;
+    private View mNotice;
     private Toolbar mToolbar;
     private SwipeRefreshLayout mSwipeRefresh;
     private RecyclerView mSellBookListDetail;
@@ -111,7 +112,7 @@ public class BookStallActivity extends BaseActivity {
 
     private void initView(){
         //如果没有任何数据就设置为不可见
-        mBookLayout = (RelativeLayout) findViewById(R.id.all_mybook);
+//        mBookLayout = (RelativeLayout) findViewById(R.id.all_mybook);
         mNotice = (TextView)findViewById(R.id.tv_notice);
         //设置fab
         mFab = (FloatingActionMenu)findViewById(R.id.add_book);
@@ -276,15 +277,23 @@ public class BookStallActivity extends BaseActivity {
                 .doOnNext(new Consumer<SellBookStallList>() {
                     @Override
                     public void accept(@NonNull SellBookStallList sellBookStallList) throws Exception {
-                        for (SellBook sellBook:sellBookStallList.sellBookList){
-                            Log.i("TestData","BookName"+sellBook.bookName+"\n");
-                        }
+//                        for (SellBook sellBook:sellBookStallList.sellBookList){
+//                            Log.i("TestData","BookName"+sellBook.bookName+"\n");
+//                        }
                         mSellBookStallListData = sellBookStallList;
-                        for (SellBook sellBook:mSellBookStallListData.sellBookList){
-                            Log.i("TestData","BookName mSellBookStallListData"+sellBook.bookName+"\n");
-                        }
+//                        for (SellBook sellBook:mSellBookStallListData.sellBookList){
+//                            Log.i("TestData","BookName mSellBookStallListData"+sellBook.bookName+"\n");
+//                        }
                         mAdapter.setList(mSellBookStallListData.sellBookList);
                         mAdapter.notifyDataSetChanged();
+                        if (sellBookStallList.sellBookList.size()==0){
+//                            mBookLayout.setVisibility(View.INVISIBLE);
+//                            mSellBookListDetail.setVisibility(View.INVISIBLE);
+                            mNotice.setVisibility(View.VISIBLE);
+                        }else{
+                            mNotice.setVisibility(View.INVISIBLE);
+//                            mSellBookListDetail.setVisibility(View.VISIBLE);
+                        }
                     }
                 })
                 .doOnComplete(new Action() {

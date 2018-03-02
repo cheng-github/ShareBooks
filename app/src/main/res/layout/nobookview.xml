@@ -7,11 +7,15 @@
     <TextView
         android:id="@+id/tv_notice"
         android:layout_gravity="center|center_horizontal"
+        android:visibility="invisible"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/s_bookstallNoBook"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:text="@string/s_bookstallNoBook"
         android:textAlignment="center"
-        android:visibility="invisible"
+        android:letterSpacing="0.05"
+        android:lineSpacingExtra="10dp"
         />
 
 </merge>

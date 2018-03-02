@@ -30,6 +30,7 @@ import usst.edu.cn.sharebooks.network.ApiInterface;
 import usst.edu.cn.sharebooks.ui.activity.BookStallActivity;
 import usst.edu.cn.sharebooks.ui.activity.DonateStallActivity;
 import usst.edu.cn.sharebooks.ui.activity.OrderBookActivity;
+import usst.edu.cn.sharebooks.ui.activity.OrderCheckActivity;
 import usst.edu.cn.sharebooks.ui.activity.UserSettingActivity;
 import usst.edu.cn.sharebooks.util.RxUtil;
 
@@ -150,6 +151,17 @@ public class MainThirdFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), OrderBookActivity.class);
+                Bundle args = new Bundle();
+                args.putSerializable("User",mUser);
+                intent.putExtras(args);
+                startActivity(intent);
+            }
+        });
+//        添加第三个布局的具体信息,也就是完成订单的查看
+        mLL3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), OrderCheckActivity.class);
                 Bundle args = new Bundle();
                 args.putSerializable("User",mUser);
                 intent.putExtras(args);

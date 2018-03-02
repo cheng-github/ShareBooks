@@ -60,7 +60,7 @@ public class DonateStallActivity extends BaseActivity {
     private FloatingActionButton mFab2;
     private FloatingActionMenu mFab;
     private RelativeLayout mBookLayout;
-    private TextView mNotice;
+    private View mNotice;
     private Toolbar mToolbar;
     private SwipeRefreshLayout mSwipeRefresh;
     private RecyclerView mDonateBookListDetail;
@@ -113,7 +113,7 @@ public class DonateStallActivity extends BaseActivity {
     private void initView(){
         //如果没有任何数据就设置为不可见
         mBookLayout = (RelativeLayout) findViewById(R.id.all_mybook);
-        mNotice = (TextView)findViewById(R.id.tv_notice);
+        mNotice = findViewById(R.id.tv_notice);
         //设置fab
         mFab = (FloatingActionMenu)findViewById(R.id.add_book);
         mFab1 = (FloatingActionButton)findViewById(R.id.fab1);
@@ -287,6 +287,11 @@ public class DonateStallActivity extends BaseActivity {
                         list = userPersonalDonateStallResponse.list;
                         mAdapter.setList(list);
                         mAdapter.notifyDataSetChanged();
+                        if (userPersonalDonateStallResponse.list.size() == 0){
+                            mNotice.setVisibility(View.VISIBLE);
+                        }else{
+                            mNotice.setVisibility(View.INVISIBLE);
+                        }
                     }
                 })
                 .doOnComplete(new Action() {

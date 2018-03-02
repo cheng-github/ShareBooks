@@ -17,14 +17,14 @@
     <string name="s_donate">贡献书籍</string>
     <string name="s_getbook">获取的书籍</string>
     <string name="s_orbook">个人订单</string>
-    <string name="s_bookstallNoBook">没有任何书籍\n   T_T</string>
+    <string name="s_bookstallNoBook">还没有任何书籍\n   T_T</string>
     <string name="s_localBook">未上传:</string>
     <string name="s_yunbook">书摊:</string>
     <string name="s_jiaocai">教材</string>
     <string name="s_qita">其它书籍</string>
     <string name="s_jianjie">内容简介:</string>
-    <string name="s_neitontest">本书是教育部推荐教材，高等学校金融学专业系列教材。 本书在2009年第三版的基础上，作了较多的修改补充，再版而成。本书主要介绍了证券投资活动的构成要素、证券市场的管理与运行机制、证券交易的程序与方式、证券投资的收益与风险、证券投资对象的选择、证券投资的基本分析、证券投资的技术分析以及现代证券投资理论等内容。本书的特点是，既阐述了发达国家证券市场的一般规律和成熟经验，又介绍了我国证券市场的现行体制；既阐述了现代投资理论，又介绍了具体实用的投资分析</string>
     <string name="s_delete">删除</string>
+    <string name="s_neitontest">本书的特点是，既阐述了发达国家证券市场的一般规律和成熟经验，又介绍了我国证券市场的现行体制；既阐述了现代投资理论，又介绍了具体实用的投资分析</string>
     <string name="s_searchtitle">搜索结果</string>
     <string name="s_jj">简介:</string>
     <string name="s_addsellbook">添加</string>
@@ -71,6 +71,9 @@
     <string name="s_personalstall">书摊详情</string>
     <string name="s_articletop">-文 章-</string>
     <string name="s_end">完</string>
+    <string name="s_wenzhangtishi">仅显示近期内三篇文章</string>
+    <string name="s_wangcheng">历史订单</string>
+
     <!-- 下面是主界面学院的名称-->
     <string name="guangdian">光电学院</string>
     <string name="nengdong">能动学院</string>

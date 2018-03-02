@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -15,32 +16,41 @@
             app:title="@string/s_orderdetail"
             />
     </android.support.design.widget.AppBarLayout>
-    <android.support.v4.widget.NestedScrollView
+    <RelativeLayout
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/grey_200"
+        android:background="@color/grey_300"
         >
-        <android.support.v7.widget.CardView
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="12dp"
+            android:scrollbars="vertical">
+            <android.support.v7.widget.CardView
             android:id="@+id/cv_ordedetail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
             android:layout_marginStart="4dp"
             android:layout_marginEnd="4dp"
             app:cardCornerRadius="4dp"
-            android:elevation="0dp"
+            android:layout_marginBottom="6dp"
+            android:layout_marginTop="6dp"
             >
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                >
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="6dp"
-                    android:layout_marginTop="6dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginBottom="2dp"
                     android:padding="2dp"
                     >
@@ -49,37 +59,18 @@
                         android:layout_height="wrap_content"
                         android:text="@string/s_shujimingchen"
                         android:textSize="15sp"
-                        android:layout_marginEnd="2dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="4dp"
                         />
                     <TextView
                         android:id="@+id/tv_bookName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="15sp"
+                        android:layout_marginTop="8dp"
                         tools:text="平凡的世界"
                         />
                 </LinearLayout>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:padding="2dp"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/s_author"
-                    android:textSize="15sp"
-                    android:layout_marginEnd="2dp"
-                    />
-                <TextView
-                    android:id="@+id/tv_author"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="路遥"
-                    />
-            </LinearLayout>
                 <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
@@ -87,13 +78,34 @@
                     android:layout_marginStart="6dp"
                     android:padding="2dp"
                     >
-                <TextView
-                    android:layout_width="wrap_content"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/s_author"
+                        android:textSize="15sp"
+                        android:layout_marginEnd="4dp"
+                        />
+                    <TextView
+                        android:id="@+id/tv_author"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="路遥"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="15sp"
-                    android:text="@string/s_pressversion"
-                    android:layout_marginEnd="2dp"
-                    />
+                    android:layout_marginStart="6dp"
+                    android:padding="2dp"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="15sp"
+                        android:text="@string/s_pressversion"
+                        android:layout_marginEnd="2dp"
+                        />
                     <TextView
                         android:id="@+id/tv_pressversion"
                         android:layout_width="wrap_content"
@@ -128,35 +140,44 @@
                 </LinearLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:padding="2dp"
+                    android:layout_height="280dp"
+                    android:padding="10dp"
                     >
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/tv_orderinfo"
                         android:text="@string/s_contactme"
-                        android:textSize="17sp"
+                        android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_centerHorizontal="true"
+                        android:layout_alignTop="@+id/civ_touxiang"
+                        android:layout_marginTop="-35dp"
                         />
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/civ_touxiang"
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:layout_centerInParent="true"
-                        android:layout_marginTop="50dp"
-                        app:civ_border_color="#000000"
-                        app:civ_border_width="1.2dp"
-                        tools:src="@drawable/touxiang" />
+                        android:layout_marginTop="60dp"
+                        tools:src="@drawable/touxiang"
+                        android:padding="8dp"
+                        />
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="60dp"
+                        android:orientation="vertical"
                         android:layout_alignParentBottom="true"
                         >
-                        <TextView
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            >
+                            <TextView
                                 android:id="@+id/tv_nickName"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -164,43 +185,49 @@
                                 android:textAlignment="center"
                                 android:maxLines="1"
                                 android:ellipsize="end"
-                                tools:text="啦啦啦啦 我是测试的小当家" />
-                        <ImageView
-                            android:id="@+id/iv_sex"
-                            android:layout_width="wrap_content"
+                                android:padding="6dp"
+                                tools:text="啦啦啦啦 我是测试的小当家"
+                                android:textColor="?android:textColorSecondary"
+                                />
+                            <ImageView
+                                android:id="@+id/iv_sex"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="4dp"
+                                tools:src="@drawable/male" />
+                            </LinearLayout>
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="4dp"
-                            tools:src="@drawable/male" />
+                            android:gravity="center"
+                            android:layout_marginStart="6dp"
+                            android:padding="6dp"
+                            >
+                            <TextView
+                                android:id="@+id/tv_contri"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                tools:text="贡献书籍:3"
+                                android:textSize="13sp"
+                                android:textColor="?android:textColorSecondary"
+                                android:layout_marginEnd="6dp"
+                                android:letterSpacing="0.1"
+                                />
+                            <TextView
+                                android:id="@+id/tv_get"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                tools:text="交易书籍:7"
+                                android:textSize="13sp"
+                                android:textColor="?android:textColorSecondary"
+                                android:layout_marginEnd="4dp"
+                                android:letterSpacing="0.1"
+                                />
+                        </LinearLayout>
                     </LinearLayout>
                 </RelativeLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_marginStart="6dp"
-                    android:padding="2dp"
-                    >
-                    <TextView
-                        android:id="@+id/tv_contri"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="贡献书籍:3"
-                        android:textSize="11sp"
-                        android:textColor="?android:textColorSecondary"
-                        android:layout_marginEnd="4dp"
-                        />
-                    <TextView
-                        android:id="@+id/tv_get"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="交易书籍:7"
-                        android:textSize="11sp"
-                        android:textColor="?android:textColorSecondary"
-                        android:layout_marginEnd="4dp"
-                        />
-                </LinearLayout>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -219,6 +246,8 @@
                     android:layout_marginStart="6dp"
                     android:padding="2dp"
                     android:textSize="13sp"
+                    android:letterSpacing="0.05"
+                    android:lineSpacingExtra="1dp"
                     android:textColor="?android:textColorSecondary"
                     tools:text="@string/s_neitontest"
                     />
@@ -262,15 +291,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/tv_contactway"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:padding="2dp"
-                    android:textSize="13sp"
+                    android:layout_marginStart="15dp"
+                    android:padding="10dp"
+                    android:layout_marginBottom="12dp"
+                    android:textSize="14sp"
                     android:textColor="?android:textColorSecondary"
-                    android:layout_marginTop="1dp"
                     tools:text="QQ3213213029"
                     />
             </LinearLayout>
-        </android.support.v7.widget.CardView>
-    </android.support.v4.widget.NestedScrollView>
-</android.support.design.widget.CoordinatorLayout>
+        </android.support.v7.widget.CardView></android.support.v4.widget.NestedScrollView>
+    </RelativeLayout>
+</LinearLayout>

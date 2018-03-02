@@ -243,14 +243,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         //我需要测试一下下面两句到底有没有刷新secondeFragment里的数据
 //        adapter.setUser(mUser);
 //        adapter.notifyDataSetChanged();
-
         //一定要调用adapter 刷新这个数据 否则  虽然在mainActivity里修改了  但是adapter里还是使用的旧的数据
         //而且要调用两句
         Log.i("TestCamera",this.mUser.getNickName());
     }
 
     private void openSellStallDetailActivity(int id){
-        Intent intent = new Intent(this,UserSellStallListActivity.class);
+            Intent intent = new Intent(this,UserSellStallListActivity.class);
         Bundle args = new Bundle();
         args.putSerializable("User",mUser);
         intent.putExtra("UserId",id);

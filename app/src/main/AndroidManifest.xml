@@ -65,13 +65,15 @@
 
         <activity android:name=".ui.activity.OrderDetailActivity"/>
 
-        <activity android:name=".ui.activity.OrderFinishedActivity"/>
-
         <activity android:name=".ui.activity.UserSellStallListActivity"/>
 
         <activity android:name=".ui.activity.NormalBookDetailActivity"/>
 
         <activity android:name=".ui.activity.ArticleDetailActivity"/>
+
+        <activity android:name=".ui.activity.OrderCheckActivity"/>
+
+        <activity android:name=".ui.activity.HistoryOrdersDetailActivity"/>
 
     </application>
 

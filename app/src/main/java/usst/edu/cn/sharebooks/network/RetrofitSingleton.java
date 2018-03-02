@@ -6,6 +6,7 @@ import com.facebook.stetho.okhttp3.StethoInterceptor;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -31,6 +32,7 @@ import usst.edu.cn.sharebooks.model.donate.DeleteDonateBookResponse;
 import usst.edu.cn.sharebooks.model.donate.UserAddDonateBookResponse;
 import usst.edu.cn.sharebooks.model.donate.UserPersonalDonateStallResponse;
 import usst.edu.cn.sharebooks.model.douban.DouBanResponse;
+import usst.edu.cn.sharebooks.model.historyorders.HistoryOrderItem;
 import usst.edu.cn.sharebooks.model.order.OrderBookActionResponse;
 import usst.edu.cn.sharebooks.model.order.OrderDealResultResponse;
 import usst.edu.cn.sharebooks.model.order.PersonalOrderResponse;
@@ -136,7 +138,6 @@ public class RetrofitSingleton {
     public Observable<UserPersonalDonateStallResponse> getPersonalBookData(int userId){
         return sApiInterface.lookDonateBook(3,userId)
                 .compose(RxUtil.<UserPersonalDonateStallResponse>io());
-
     }
 
     public Observable<UserAddDonateBookResponse> addDonateBookResponseObservable(Map<String,String> infs){
@@ -236,5 +237,9 @@ public class RetrofitSingleton {
 
     public Observable<ArticleDetail> loadArticleContent(String item_id){
         return sApiInterface.loadArticleContent(item_id).compose(RxUtil.<ArticleDetail>io());
+    }
+
+    public Observable<ArrayList<HistoryOrderItem>> loadHistoryOrdersInfo(int userId){
+        return sApiInterface.getHistoryOrdersInfo(userId).compose(RxUtil.<ArrayList<HistoryOrderItem>>io());
     }
 }
