@@ -7,6 +7,7 @@ import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
 
 public class BaseActivity extends RxAppCompatActivity{
+    //这个还是挺有用的，当我们需要传递activity这个引用的时候
     public static BaseActivity activity;
 
     @Override

@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
+import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import org.reactivestreams.Subscriber;
@@ -29,9 +30,12 @@ import io.reactivex.schedulers.Schedulers;
 import io.reactivex.subjects.Subject;
 import usst.edu.cn.sharebooks.R;
 import usst.edu.cn.sharebooks.base.BaseFragment;
+import usst.edu.cn.sharebooks.component.RxBus;
 import usst.edu.cn.sharebooks.model.articlelist.ArticleHeader.SimpleArticle;
 import usst.edu.cn.sharebooks.model.articlelist.ArticleIDList;
+import usst.edu.cn.sharebooks.model.event.CancelNetWorkRequest;
 import usst.edu.cn.sharebooks.network.RetrofitSingleton;
+import usst.edu.cn.sharebooks.ui.activity.MainActivity;
 import usst.edu.cn.sharebooks.ui.adapter.SimpleArticleAdapter;
 
 
@@ -143,7 +147,88 @@ public class MainSecondFragment extends BaseFragment {
                 .compose(this.bindUntilEvent(FragmentEvent.DESTROY))
                 .subscribe();*/
         //使用merge一次完成多个请求
-        Observable.merge(RetrofitSingleton.getInstance().loadArticleHeader(articleIDLists.data[0]),
+        if (articleIDLists.data == null){
+            RetrofitSingleton.getInstance().getArticleIDList()
+                    .doOnError(new Consumer<Throwable>() {
+                        @Override
+                        public void accept(Throwable throwable) throws Exception {
+                            Log.i("Error","获取文章ID列表出错");
+                        }
+                    })
+                    .doOnNext(new Consumer<ArticleIDList>() {
+                        @Override
+                        public void accept(ArticleIDList articleIDList) throws Exception {
+                            for (String i:articleIDList.data)
+                                Log.i("TestArticle",i+"\n");
+                            articleIDLists = articleIDList;
+                        }
+                    })
+                    .doOnComplete(new Action() {
+                        @Override
+                        public void run() throws Exception {
+                            startLoadArticleDetail();
+                        }
+                    })
+                    .compose(this.bindUntilEvent(FragmentEvent.DESTROY))
+                    .subscribe();
+        }else {
+            RxBus.getInstance().post(new CancelNetWorkRequest(Observable.merge(RetrofitSingleton.getInstance().setmContext(MainActivity.activity).loadArticleHeader(articleIDLists.data[0]),
+                    RetrofitSingleton.getInstance().loadArticleHeader(articleIDLists.data[1]),
+                    RetrofitSingleton.getInstance().loadArticleHeader(articleIDLists.data[2]))
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .doOnError(new Consumer<Throwable>() {
+                        @Override
+                        public void accept(Throwable throwable) throws Exception {
+                            Log.e("Error","加载多个请求出现错误");
+                        }
+                    })
+                    .doOnNext(new Consumer<SimpleArticle>() {
+                        @Override
+                        public void accept(SimpleArticle simpleArticle) throws Exception {
+                            list.add(simpleArticle);
+                        }
+                    })
+                    .doOnComplete(new Action() {
+                        @Override
+                        public void run() throws Exception {
+                            Log.i("TestArticle","所有数据加载完毕");
+//                        for (SimpleArticle article:list){
+//                            for (int i = 0;i<article.data.content_list.length;i++){
+//                                if (i == 1){
+//                                    Log.i("TestArticle",article.data.content_list[i].item_id);
+//                                    Log.i("TestArticle",article.data.content_list[i].title);
+//                                    Log.i("TestArticle",article.data.content_list[i].forward);
+//                                    Log.i("TestArticle",article.data.content_list[i].img_url);
+//                                    if (article.data.content_list[i].author.user_name!=null)
+//                                        Log.i("TestArticle",article.data.content_list[i].author.user_name);
+//                                }
+//                            }
+//                        }
+                            adapter.setList(list);
+                            adapter.notifyDataSetChanged();
+                            mSwipeRefreshLayout.setRefreshing(false);
+                        }
+                    })
+                    .compose(this.bindUntilEvent(FragmentEvent.DESTROY))
+                    .subscribe()));
+        }
+    }
+
+    @Override
+    protected void loadWhenVisible() {
+           Log.i("TestLifeCycle","loadWhenVisible()");
+//            load("all","all");
+ //       RxBus.getInstance().post(new ChangeTitleEvent());
+        if (!isLoad){
+            isLoad = true;
+            loadData();
+        }
+    }
+
+
+    private void startLoadArticleDetail(){
+        RxBus.getInstance().post(new CancelNetWorkRequest(Observable.merge(RetrofitSingleton.getInstance().setmContext(MainActivity.activity).loadArticleHeader(articleIDLists.data[0]),
                 RetrofitSingleton.getInstance().loadArticleHeader(articleIDLists.data[1]),
                 RetrofitSingleton.getInstance().loadArticleHeader(articleIDLists.data[2]))
                 .subscribeOn(Schedulers.io())
@@ -182,18 +267,6 @@ public class MainSecondFragment extends BaseFragment {
                     }
                 })
                 .compose(this.bindUntilEvent(FragmentEvent.DESTROY))
-                .subscribe();
+                .subscribe()));
     }
-
-    @Override
-    protected void loadWhenVisible() {
-           Log.i("TestLifeCycle","loadWhenVisible()");
-//            load("all","all");
- //       RxBus.getInstance().post(new ChangeTitleEvent());
-        if (!isLoad){
-            isLoad = true;
-            loadData();
-        }
-    }
-
 }

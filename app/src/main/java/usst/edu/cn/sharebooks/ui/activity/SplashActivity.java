@@ -14,6 +14,7 @@ import org.litepal.crud.DataSupport;
 import java.util.List;
 
 import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import usst.edu.cn.sharebooks.R;
@@ -22,6 +23,7 @@ import usst.edu.cn.sharebooks.model.user.LoginResponse;
 import usst.edu.cn.sharebooks.model.user.User;
 import usst.edu.cn.sharebooks.network.RetrofitSingleton;
 import usst.edu.cn.sharebooks.util.NetWorkUtil;
+import usst.edu.cn.sharebooks.util.ToastUtil;
 
 /**
  *
@@ -33,6 +35,7 @@ public class SplashActivity extends BaseActivity {
     private int SelectionNumber; //表示选择到登录界面还是主界面
     private User sendUser;
     private boolean isNetConnected;
+    private Disposable disposable;
 
     @Override
     protected void onCreate(Bundle savedIntance){
@@ -67,16 +70,7 @@ public class SplashActivity extends BaseActivity {
 
     //测试之前的登录的信息是否失效
     private void testLogin(String userName,String passWord){
-        RetrofitSingleton.getInstance().userLogin(userName,passWord)
-                .doOnError(new Consumer<Throwable>() {
-                    @Override
-                    public void accept(@NonNull Throwable throwable) throws Exception {
-                        Log.i("Test","doOnError()--------from testLogin");
-//                        Toast.makeText(SplashActivity.this,"服务器异常",Toast.LENGTH_SHORT).show();
-//                        SelectionNumber = 0;
-                        //上面两句没有用 不知道为什么
-                    }
-                })
+         disposable = RetrofitSingleton.getInstance().setmContext(SplashActivity.this).userLogin(userName,passWord)
                 .doOnNext(new Consumer<LoginResponse>() {
                     @Override
                     public void accept(@NonNull LoginResponse loginResponse) throws Exception {
@@ -89,6 +83,16 @@ public class SplashActivity extends BaseActivity {
                        }
                     }
                 })
+                .doOnError(new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        Log.i("Test","doOnError()--------from testLogin");
+                        Toast.makeText(SplashActivity.this,"网络连接超时",Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(SplashActivity.this,"服务器异常",Toast.LENGTH_SHORT).show();
+//                        SelectionNumber = 0;
+                        //上面两句没有用 不知道为什么
+                    }
+                })
                 .doOnComplete(new Action() {
                     @Override
                     public void run() throws Exception {
@@ -99,6 +103,17 @@ public class SplashActivity extends BaseActivity {
                 .compose(this.bindUntilEvent(ActivityEvent.DESTROY))
                 .subscribe();
     }
+
+//    public void timeOutHanding(){
+//        if (disposable != null)
+//            disposable.dispose();
+//        Log.e("Error","连接超时处理调用");
+//        //很奇怪为什么吐司没有显示
+//        Toast.makeText(SplashActivity.this,"网络连接超时,请检查您的网络",Toast.LENGTH_SHORT).show();
+//        Intent intent = new Intent(SplashActivity.this,MainActivity.class);
+//        startActivity(intent);
+//        finish();
+//    }
 
     private synchronized void  goHome(){
         new Handler().postDelayed(new Runnable() {

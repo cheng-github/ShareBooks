@@ -14,17 +14,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 
 import io.reactivex.annotations.NonNull;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import usst.edu.cn.sharebooks.R;
 import usst.edu.cn.sharebooks.base.BaseActivity;
 import usst.edu.cn.sharebooks.component.RxBus;
 import usst.edu.cn.sharebooks.model.articlelist.ArticleIDList;
+import usst.edu.cn.sharebooks.model.event.CancelNetWorkRequest;
 import usst.edu.cn.sharebooks.model.event.OpenArticleDetailEvent;
 import usst.edu.cn.sharebooks.model.event.OpenNormalBookDetailEventForDonate;
 import usst.edu.cn.sharebooks.model.event.OpenSellStallDetailEvent;
@@ -33,6 +36,7 @@ import usst.edu.cn.sharebooks.model.user.User;
 import usst.edu.cn.sharebooks.network.RetrofitSingleton;
 import usst.edu.cn.sharebooks.ui.adapter.MainFragmentAdapter;
 import usst.edu.cn.sharebooks.util.RxUtil;
+import usst.edu.cn.sharebooks.util.ToastUtil;
 
 
 public class MainActivity extends BaseActivity implements View.OnClickListener{
@@ -45,6 +49,18 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
     private TextView mToolBarTitle;
     private MainFragmentAdapter adapter;
     public ArticleIDList articleIDLists;
+    private Disposable disposable;
+
+    public void setDisposable(Disposable disposable) {
+        this.disposable = disposable;
+    }
+
+//    public void onTimeOutHanding(){
+//        if (disposable != null)
+//           disposable.dispose();
+//        Toast.makeText(MainActivity.this,"网络连接超时，请检查您的网络设置",Toast.LENGTH_SHORT).show();
+////        ToastUtil.showShort("网络连接超时，请检查您的网络设置");
+//    }
 
     @Override
     protected void onCreate(Bundle savedIntance){
@@ -85,6 +101,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                     @Override
                     public void accept(OpenArticleDetailEvent openArticleDetailEvent) throws Exception {
                         openArticleDetailActivity(openArticleDetailEvent.getArticle_id());
+                    }
+                })
+                .compose(bindUntilEvent(ActivityEvent.DESTROY))
+                .subscribe();
+        RxBus.getInstance().tObservable(CancelNetWorkRequest.class)
+                .doOnNext(new Consumer<CancelNetWorkRequest>() {
+                    @Override
+                    public void accept(CancelNetWorkRequest cancelNetWorkRequest) throws Exception {
+                        setDisposable(cancelNetWorkRequest.getDisposable());
                     }
                 })
                 .compose(bindUntilEvent(ActivityEvent.DESTROY))

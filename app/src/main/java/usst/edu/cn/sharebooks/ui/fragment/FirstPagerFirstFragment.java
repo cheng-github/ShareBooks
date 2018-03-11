@@ -28,8 +28,10 @@ import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import usst.edu.cn.sharebooks.R;
 import usst.edu.cn.sharebooks.base.BaseFragment;
+import usst.edu.cn.sharebooks.component.RxBus;
 import usst.edu.cn.sharebooks.model.donate.AllAvailableBook;
 import usst.edu.cn.sharebooks.model.donate.GivenBookItem;
+import usst.edu.cn.sharebooks.model.event.CancelNetWorkRequest;
 import usst.edu.cn.sharebooks.model.order.OrderBookActionResponse;
 import usst.edu.cn.sharebooks.model.user.User;
 import usst.edu.cn.sharebooks.network.RetrofitSingleton;
@@ -140,7 +142,7 @@ public class FirstPagerFirstFragment extends BaseFragment {
         infs.put("IsJiaoCai",item.isJiaoCai+"");
         infs.put("DonateUserId",item.donateUser_Id+"");
         infs.put("Version",item.version);
-        RetrofitSingleton.getInstance().orderBookActionResponseObservable(requestWay,infs)
+        RxBus.getInstance().post(new CancelNetWorkRequest(RetrofitSingleton.getInstance().setmContext(MainActivity.activity).orderBookActionResponseObservable(requestWay,infs)
                 .doOnSubscribe(new Consumer<Disposable>() {
                     @Override
                     public void accept(@NonNull Disposable disposable) throws Exception {
@@ -167,11 +169,11 @@ public class FirstPagerFirstFragment extends BaseFragment {
                     }
                 })
                 .compose(this.bindUntilEvent(FragmentEvent.DESTROY))
-                .subscribe();
+                .subscribe()));
     }
 
     private void loadData(){
-        RetrofitSingleton.getInstance().fetchGivenBookData()
+        RxBus.getInstance().post(new CancelNetWorkRequest(RetrofitSingleton.getInstance().setmContext(MainActivity.activity).fetchGivenBookData()
                 .compose(this.<AllAvailableBook>bindUntilEvent(FragmentEvent.DESTROY))//记得要绑定生命周期
                 .doOnSubscribe(new Consumer<Disposable>() {
                     @Override
@@ -210,7 +212,7 @@ public class FirstPagerFirstFragment extends BaseFragment {
                         //  ToastUtil.showShort("数据加载完毕.");
                     }
                 })
-                .subscribe();
+                .subscribe()));
     }
 
     @Override

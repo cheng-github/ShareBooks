@@ -18,9 +18,12 @@ import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
 import usst.edu.cn.sharebooks.R;
 import usst.edu.cn.sharebooks.base.BaseFragment;
+import usst.edu.cn.sharebooks.component.RxBus;
+import usst.edu.cn.sharebooks.model.event.CancelNetWorkRequest;
 import usst.edu.cn.sharebooks.model.sellstall.AllUserSellStallResponse;
 import usst.edu.cn.sharebooks.model.user.User;
 import usst.edu.cn.sharebooks.network.RetrofitSingleton;
+import usst.edu.cn.sharebooks.ui.activity.MainActivity;
 import usst.edu.cn.sharebooks.ui.adapter.UserSellBookStallAdapter;
 import usst.edu.cn.sharebooks.util.DialogUtil;
 
@@ -85,7 +88,7 @@ public class FirstPagerSecondFragment extends BaseFragment {
     }
 
     private void loadData(){
-        RetrofitSingleton.getInstance().getAllUserSellStallInformaiton()
+        RxBus.getInstance().post(new CancelNetWorkRequest(RetrofitSingleton.getInstance().setmContext(MainActivity.activity).getAllUserSellStallInformaiton()
                 .doOnSubscribe(new Consumer<Disposable>() {
                     @Override
                     public void accept(@NonNull Disposable disposable) throws Exception {
@@ -121,7 +124,7 @@ public class FirstPagerSecondFragment extends BaseFragment {
                     }
                 })
                 .compose(bindUntilEvent(FragmentEvent.DESTROY))
-                .subscribe();
+                .subscribe()));
     }
 
     @Override

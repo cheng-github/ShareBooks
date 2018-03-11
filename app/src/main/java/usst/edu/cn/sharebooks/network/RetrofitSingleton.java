@@ -2,10 +2,14 @@ package usst.edu.cn.sharebooks.network;
 
 
 
+import android.content.Context;
+import android.util.Log;
+
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -18,6 +22,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -45,8 +50,11 @@ import usst.edu.cn.sharebooks.model.sellstall.SellBookStallList;
 import usst.edu.cn.sharebooks.model.user.LoginResponse;
 import usst.edu.cn.sharebooks.model.user.RegisterResponser;
 import usst.edu.cn.sharebooks.model.user.UpdateUserInfoResponse;
+import usst.edu.cn.sharebooks.ui.activity.MainActivity;
+import usst.edu.cn.sharebooks.ui.activity.SplashActivity;
 import usst.edu.cn.sharebooks.util.NetWorkUtil;
 import usst.edu.cn.sharebooks.util.RxUtil;
+import usst.edu.cn.sharebooks.util.ToastUtil;
 
 //使用单例模式的网络访问
 public class RetrofitSingleton {
@@ -54,6 +62,17 @@ public class RetrofitSingleton {
     private static OkHttpClient sOkHttpClient;
     private static Retrofit sRetrofit;
     private static ApiInterface sApiInterface;
+//调用网络请求的activity的引用
+    private Context mContext;
+
+    public Context getmContext() {
+        return mContext;
+    }
+
+    public RetrofitSingleton setmContext(Context mContext) {
+        this.mContext = mContext;
+        return getInstance();
+    }
 
     public static RetrofitSingleton getInstance(){
         if (sInstance == null){
@@ -63,7 +82,8 @@ public class RetrofitSingleton {
     }
 
     private RetrofitSingleton(){
-        initOkHttp();
+        initOkHttp();//对okHttp进行相关设置
+        //下面两句都是使用retrofit对okhttp进行了一些封装,最终的网络调用都是通过一个ApiInterface这个类实现的
         initRetrofit();
         sApiInterface = sRetrofit.create(ApiInterface.class);
     }
@@ -79,6 +99,14 @@ public class RetrofitSingleton {
 
     private void initOkHttp(){
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        //设置超时异常处理拦截器,注意所有的拦截器都必须返回一个response对象,也就是在这个response对象里保存我们在拦截器里的相关设置
+//        Interceptor timeOutInterceptor = new Interceptor() {
+//            @Override
+//            public Response intercept(Chain chain) throws IOException {
+//                return onTimeOutIntercep(chain);
+//            }
+//        };
+//        builder.addInterceptor(timeOutInterceptor);
         File cacheFile = new File(Constants.NET_CACHE);
         Cache cache = new Cache(cacheFile,1024*1024*20);//设置20M的缓存大小
         //设置缓存拦截器
@@ -87,7 +115,7 @@ public class RetrofitSingleton {
             public Response intercept(Chain chain) throws IOException {
                 Request request = chain.request();
                 //在没有网络的情况下直接使用缓存
-                if (!NetWorkUtil.isNetWorkConnected(ShareApplication.getAppContext())){
+                if (!NetWorkUtil.isNetWorkConnected(ShareApplication.getAppContext())) {
                     request = request.newBuilder()
                             .cacheControl(CacheControl.FORCE_CACHE)
                             .build();
@@ -109,17 +137,43 @@ public class RetrofitSingleton {
             builder.addNetworkInterceptor(new StethoInterceptor()); //添加facebook的网络debug框架
         }
         //设置超时
-        builder.connectTimeout(15, TimeUnit.SECONDS);
+        builder.connectTimeout(60, TimeUnit.SECONDS);//尽量多设置一点时间,测试一下三十秒是否还是会跑出异常
+        //依旧会抛出异常crashed掉我的程序
+        //解决方法应该是增加网络超时这种情况的处理,以及为了避免网络差的环境下加载数据，增加TimeOut的连接时长是非常有必要的
         builder.readTimeout(20, TimeUnit.SECONDS);
         builder.writeTimeout(20, TimeUnit.SECONDS);
         builder.retryOnConnectionFailure(true);
         //错误重连  不设置错误重连
       //  builder.retryOnConnectionFailure(true);
         sOkHttpClient = builder.build();
+//        其实retrofit的最大的作用就是使用简单的方式(注解)将不同的http访问封装到一个类里去
+//        sOkHttpClient.newCall()
     }
     //注意subscribeOn()主要改变的是订阅的线程。即call()执行的线程
    // ObserveOn()主要改变的是发送的线程。即onNext()执行的线程。
     //这两点别搞混淆了
+
+//    /**
+//     * 网络连接超时处理捕获
+//     * @return
+//     */
+//    private Response onTimeOutIntercep(Interceptor.Chain chain)throws IOException{
+//        try{
+//            Response response = chain.proceed(chain.request());
+//            String content = "";
+////            return response.newBuilder().body(ResponseBody.create(response.body().contentType(),content)).build();
+//        }catch (SocketTimeoutException e){
+//            e.printStackTrace();
+////            开始进行超时情况的处理
+////            ToastUtil.showShort("网络连接超时");
+//            Log.e("Error","-------------------------------网络请求超时-------------------------------");
+//            if (mContext instanceof SplashActivity)
+//                ((SplashActivity)mContext).timeOutHanding();
+//            else if (mContext instanceof MainActivity)
+//                ((MainActivity) mContext).onTimeOutHanding();
+//        }
+//        return chain.proceed(chain.request());
+//    }
 
     //下面开始调用Retrofit获取服务器数据
     public Observable<AllAvailableBook> fetchGivenBookData(){

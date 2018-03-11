@@ -56,10 +56,10 @@ public class SimpleArticleAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemViewType(int position) {
 //        return super.getItemViewType(position);  默认返回值是0,也就是没有重写的时候
-        if (position != 3)
-            return TYPE_NORMAL;
-        else
-            return TYPE_FOOTER;
+            if (position != 3)
+                return TYPE_NORMAL;
+            else
+                return TYPE_FOOTER;
     }
 
     public void setList(List<SimpleArticle> list) {

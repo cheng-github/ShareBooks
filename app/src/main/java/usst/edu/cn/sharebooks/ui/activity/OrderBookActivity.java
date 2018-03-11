@@ -61,7 +61,7 @@ import usst.edu.cn.sharebooks.util.DialogUtil;
 
     private void initView(){
         setupToolBar();
-        mNotice = findViewById(R.id.notice);
+        mNotice = findViewById(R.id.tv_notice);
         mSwipeRefreshLayout = (SwipeRefreshLayout)findViewById(R.id.srl_swiperefresh);
         mSwipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,

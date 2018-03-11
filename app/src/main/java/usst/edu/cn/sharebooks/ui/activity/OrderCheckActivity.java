@@ -66,7 +66,7 @@ public class OrderCheckActivity extends BaseActivity {
     }
 
     private void initMainViews(){
-        mNotice = findViewById(R.id.notice);
+        mNotice = findViewById(R.id.tv_notice);
         mSwipeRefresh = (SwipeRefreshLayout)findViewById(R.id.srl_refresh);
         mSwipeRefresh.setColorSchemeResources(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,
