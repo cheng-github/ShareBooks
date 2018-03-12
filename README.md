@@ -31,19 +31,31 @@ ShareBook提供给所有校园内的学生一个平台,可以将自己的教材�
   ![登录](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/login.png)
   ![注册](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/register.png)
   
-* 预订免费书籍以及书摊书籍  
+* 免费书籍分享以及个人书摊  
 
-  ![预订免费书籍](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/yuding1.gif)
-       ![预订书摊书籍](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/yuding2.gif)  
+  ![免费书籍](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/freepage.png)
+  ![个人书摊书籍](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/stallpage.png)  
+  ![预订操作](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/orderaction.png)
+  
+* 文章推荐
+
+  ![文章推荐](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/articlerRecommend.png)
+  ![阅读文章](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/articlecontent.png)
+
+* 个人信息
+
+ ![个人信息界面](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/personalpage.png)
+
+* 图书搜索
+
+  ![搜索操作](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/search.png)  
+  ![搜索校内书籍](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/mysearchres.png)
+  ![搜索其它书籍(使用豆瓣API)](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/doubansearch.png)
   
-* 添加免费书籍书摊书籍    
-
-  ![添加免费书籍](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/uploadfree.gif)
-       ![添加书摊书籍](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/uploadsell.gif)  
-
-* 修改个人信息  
-
-  ![修改个人信息](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/xiugai.gif)  
+* 订单以及书籍详情
+ 
+  ![个人订单](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/orderdetail.png)
+  ![书籍详情](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/bookdetail.png)
 ## 四、ToDoList
 - [ ] 以书换书功能
 - [x] 完成订单的界面
