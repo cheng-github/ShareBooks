@@ -18,6 +18,7 @@
     <string name="s_getbook">获取的书籍</string>
     <string name="s_orbook">个人订单</string>
     <string name="s_bookstallNoBook">还没有任何书籍\n   T_T</string>
+    <string name="s_morearticle">下拉可加载文章哦~~</string>
     <string name="s_localBook">未上传:</string>
     <string name="s_yunbook">书摊:</string>
     <string name="s_jiaocai">教材</string>

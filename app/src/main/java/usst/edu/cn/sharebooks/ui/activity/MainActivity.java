@@ -201,6 +201,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
                 .doOnComplete(new Action() {
                     @Override
                     public void run() throws Exception {
+                        if (articleIDLists != null && adapter != null && adapter.getSecondFragment()!= null)
                         adapter.getSecondFragment().setArticleIDLists(articleIDLists);
                     }
                 })

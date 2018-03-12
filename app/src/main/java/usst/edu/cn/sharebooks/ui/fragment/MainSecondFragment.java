@@ -37,6 +37,7 @@ import usst.edu.cn.sharebooks.model.event.CancelNetWorkRequest;
 import usst.edu.cn.sharebooks.network.RetrofitSingleton;
 import usst.edu.cn.sharebooks.ui.activity.MainActivity;
 import usst.edu.cn.sharebooks.ui.adapter.SimpleArticleAdapter;
+import usst.edu.cn.sharebooks.util.DialogUtil;
 
 
 public class MainSecondFragment extends BaseFragment {
@@ -49,6 +50,9 @@ public class MainSecondFragment extends BaseFragment {
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mRecyclerView;
     private SimpleArticleAdapter adapter;
+    private static boolean isManuLoad = false;
+    private static boolean isFinishedLoading = false;//用于判断加载是否完成
+//    private static boolean isArticleVisible = false;
 
     //更新articleIDLists
     public void setArticleIDLists(ArticleIDList articleIDLists) {
@@ -100,6 +104,7 @@ public class MainSecondFragment extends BaseFragment {
                             @Override
                             public void run() {
                                 loadData();//匿名内部类可以自由的调用其外部类的方法
+                                isManuLoad = true;
                             }
                         },1000);
                     }
@@ -206,8 +211,10 @@ public class MainSecondFragment extends BaseFragment {
 //                            }
 //                        }
                             adapter.setList(list);
+//                            isArticleVisible = true;
                             adapter.notifyDataSetChanged();
                             mSwipeRefreshLayout.setRefreshing(false);
+                            isFinishedLoading = true;
                         }
                     })
                     .compose(this.bindUntilEvent(FragmentEvent.DESTROY))
@@ -220,10 +227,14 @@ public class MainSecondFragment extends BaseFragment {
            Log.i("TestLifeCycle","loadWhenVisible()");
 //            load("all","all");
  //       RxBus.getInstance().post(new ChangeTitleEvent());
-        if (!isLoad){
+        if (!isLoad || !isFinishedLoading){
             isLoad = true;
             loadData();
         }
+//        if (!isArticleVisible){
+//            loadData();
+//            DialogUtil.showTriangleDialogForLoading(getContext(),"加載中...");
+//        }
     }
 
 
@@ -264,6 +275,7 @@ public class MainSecondFragment extends BaseFragment {
                         adapter.setList(list);
                         adapter.notifyDataSetChanged();
                         mSwipeRefreshLayout.setRefreshing(false);
+                        isFinishedLoading = true;
                     }
                 })
                 .compose(this.bindUntilEvent(FragmentEvent.DESTROY))

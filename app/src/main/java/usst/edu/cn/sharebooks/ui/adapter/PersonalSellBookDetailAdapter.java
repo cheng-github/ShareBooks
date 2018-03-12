@@ -2,6 +2,7 @@ package usst.edu.cn.sharebooks.ui.adapter;
 
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -82,7 +83,7 @@ public class PersonalSellBookDetailAdapter extends RecyclerView.Adapter{
             String versionPress = sellBook.press+"/"+sellBook.version;
             String imageUrl = "";
             if (sellBook.isJiaoCai == 1){
-                 imageUrl= ApiInterface.AllBookImageUrl+sellBook.imageUrl;//如果等于1 那么是教材  需要拼接图片地址
+                 imageUrl= ApiInterface.AllBookImageUrl+ Uri.encode(sellBook.imageUrl);//如果等于1 那么是教材  需要拼接图片地址
             }else {
                 imageUrl = sellBook.imageUrl;
             }

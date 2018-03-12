@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityOptionsCompat;
@@ -86,8 +87,9 @@ public class SearchJiaoCaiBookAdapter extends RecyclerView.Adapter {
 
         private void bind(final JiaoCai jiaoCai){
             String versionPress = jiaoCai.press+"/"+jiaoCai.version;
-            String imageUrl = ApiInterface.AllBookImageUrl+jiaoCai.imageUrl;
-          // Glide.with(context).load(imageUrl).into(mBookImage);
+//            String imageUrl = ApiInterface.AllBookImageUrl+jiaoCai.imageUrl;
+            String imageUrl = ApiInterface.AllBookImageUrl+ Uri.encode(jiaoCai.imageUrl);//要对书名先进行编码,避免一些敏感字符比如#导致无法加载图片
+            // Glide.with(context).load(imageUrl).into(mBookImage);
             GlideApp.with(context)
                     .asBitmap()
                     .load(imageUrl)

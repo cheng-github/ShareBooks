@@ -3,8 +3,10 @@ package usst.edu.cn.sharebooks.ui.adapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -86,10 +89,11 @@ public class GivenBookAdapter extends RecyclerView.Adapter {
         private void bind(final GivenBookItem item){
             String imageUrl = "";
             if (item.isJiaoCai == 1){
-                 imageUrl =ApiInterface.AllBookImageUrl+item.imageUrl;
+                 imageUrl =ApiInterface.AllBookImageUrl+Uri.encode(item.imageUrl);
             }else {
                 imageUrl = item.imageUrl;
             }
+//            Log.e("Error", Uri.encode(imageUrl));
             Glide.with(context).load(imageUrl).into(mImageView);
             mBookName.setText(item.bookName);
             mAuthorPressVersion.setText(item.author+"/"+item.press+"/"+item.version);

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -78,7 +79,7 @@ public class UserSellStallItemAdapter extends RecyclerView.Adapter {
         private void bind(final UserSellStallItemForOthers item){
             String imageUrl = "";
             if (item.isJiaoCai == 1){
-                imageUrl = ApiInterface.AllBookImageUrl+item.imageUrl;
+                imageUrl = ApiInterface.AllBookImageUrl+ Uri.encode(item.imageUrl);
             }else {
                 imageUrl = item.imageUrl;
             }

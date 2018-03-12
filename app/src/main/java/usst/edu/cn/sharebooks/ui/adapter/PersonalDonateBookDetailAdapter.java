@@ -1,6 +1,7 @@
 package usst.edu.cn.sharebooks.ui.adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -74,7 +75,7 @@ public class PersonalDonateBookDetailAdapter extends RecyclerView.Adapter {
             String versionPress = item.press+"/"+item.version;
             String imageUrl = "";
             if (item.isJiaoCai == 1){
-                imageUrl= ApiInterface.AllBookImageUrl+item.imageUrl;//如果等于1 那么是教材  需要拼接图片地址
+                imageUrl= ApiInterface.AllBookImageUrl+ Uri.encode(item.imageUrl);//如果等于1 那么是教材  需要拼接图片地址
             }else {
                 imageUrl = item.imageUrl;
             }

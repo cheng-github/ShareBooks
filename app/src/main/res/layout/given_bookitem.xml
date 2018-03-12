@@ -47,13 +47,15 @@
                     android:textStyle="bold"
                     tools:text="我是书籍名称" />
                 <TextView
-                    tools:text="作者/我是出版社/版本号"
+                    tools:text="作者/我是出版社/版本号...........................作者/我是出版社/版本号..........................."
                     android:id="@+id/tv_authorpressversion"
                     android:textSize="12sp"
                     android:layout_marginTop="3dp"
                     android:layout_marginBottom="2dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:lines="1"
+                    android:ellipsize="end"
                     />
                 <LinearLayout
                     android:orientation="horizontal"
@@ -99,7 +101,7 @@
 
     <Button
         android:layout_width="110dp"
-        android:layout_height="140dp"
+        android:layout_height="145dp"
         android:id="@+id/bt_order"
         android:textSize="18sp"
         android:textColor="@color/color_white"

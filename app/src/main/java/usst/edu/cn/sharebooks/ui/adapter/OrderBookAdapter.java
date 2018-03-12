@@ -2,6 +2,7 @@ package usst.edu.cn.sharebooks.ui.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -107,7 +108,7 @@ public class OrderBookAdapter extends RecyclerView.Adapter {
             String pressversion = item.press+"/"+item.version;
             String imageUrl = "";
             if (item.isJiaoCai == 1){
-                imageUrl= ApiInterface.AllBookImageUrl+item.imagerUrl;//如果等于1 那么是教材  需要拼接图片地址
+                imageUrl= ApiInterface.AllBookImageUrl+ Uri.encode(item.imagerUrl);//如果等于1 那么是教材  需要拼接图片地址
             }else {
                 imageUrl = item.imagerUrl;
             }
@@ -240,7 +241,7 @@ public class OrderBookAdapter extends RecyclerView.Adapter {
             String pressversion = item.press+"/"+item.version;
             String imageUrl = "";
             if (item.isJiaoCai == 1){
-                imageUrl= ApiInterface.AllBookImageUrl+item.imagerUrl;//如果等于1 那么是教材  需要拼接图片地址
+                imageUrl= ApiInterface.AllBookImageUrl+Uri.encode(item.imagerUrl);//如果等于1 那么是教材  需要拼接图片地址
             }else {
                 imageUrl = item.imagerUrl;
             }

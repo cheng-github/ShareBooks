@@ -1,6 +1,7 @@
 package usst.edu.cn.sharebooks.ui.adapter;
 
 import android.content.Context;
+import android.net.Uri;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -71,7 +72,7 @@ public class HistoryOrdersAdapter extends RecyclerView.Adapter {
             mAuthor.setText(item.author);
             mPreservation.setText(item.press+"/"+item.version);
             if (item.isJiaoCai == 1)
-                Glide.with(context).load(ApiInterface.AllBookImageUrl+item.bookImageUrl).into(mImageView);
+                Glide.with(context).load(ApiInterface.AllBookImageUrl+ Uri.encode(item.bookImageUrl)).into(mImageView);
             else
                 Glide.with(context).load(item.bookImageUrl).into(mImageView);
             mName.setText("交易对象:"+item.userInfo.nickName);

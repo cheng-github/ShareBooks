@@ -71,8 +71,12 @@ public class OrderDetailActivity extends BaseActivity {
         else
             mOrderInfo.setText("预订者");
         mCircleImageView = (CircleImageView)findViewById(R.id.civ_touxiang);
-        String touxiangUrl = ApiInterface.UserImageUrl+orderItem.touXiangImageUrl;
-        GlideApp.with(this).load(touxiangUrl).dontAnimate().into(mCircleImageView);//不使用动画加载
+        if (orderItem.touXiangImageUrl.equals("?"))
+             GlideApp.with(this).load(R.drawable.touxiang).dontAnimate().into(mCircleImageView);
+        else {
+            String touxiangUrl = ApiInterface.UserImageUrl+orderItem.touXiangImageUrl;
+            GlideApp.with(this).load(touxiangUrl).dontAnimate().into(mCircleImageView);//不使用动画加载
+        }
         mNickName = (TextView)findViewById(R.id.tv_nickName);
         mNickName.setText(orderItem.nickName);
         mContri = (TextView)findViewById(R.id.tv_contri);
