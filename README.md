@@ -28,7 +28,8 @@ ShareBook提供给所有校园内的学生一个平台,可以将自己的教材�
 ## 三、运行截图演示
  * 登录注册  
  
-  ![登录注册](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/login.gif)  
+  ![登录](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/login.png)
+  ![注册](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/register.png)
   
 * 预订免费书籍以及书摊书籍  
 
@@ -45,8 +46,8 @@ ShareBook提供给所有校园内的学生一个平台,可以将自己的教材�
   ![修改个人信息](https://github.com/cheng-github/ShareBooks/blob/master/screenshots/xiugai.gif)  
 ## 四、ToDoList
 - [ ] 以书换书功能
-- [ ] 完成订单的界面
-- [ ] 文章推荐
+- [x] 完成订单的界面
+- [x] 文章推荐
 ## 五、其它
   如果您对这个App有兴趣，欢迎一起去完善它。Yeah,Just make it better.  (ﾉ◕ヮ◕)ﾉ
 
