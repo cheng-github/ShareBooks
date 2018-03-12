@@ -19,10 +19,13 @@ import android.widget.Toast;
 import com.trello.rxlifecycle2.android.ActivityEvent;
 import com.trello.rxlifecycle2.android.FragmentEvent;
 
+import org.litepal.crud.DataSupport;
+
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
 import io.reactivex.functions.Consumer;
+import me.drakeet.materialdialog.MaterialDialog;
 import usst.edu.cn.sharebooks.R;
 import usst.edu.cn.sharebooks.base.BaseActivity;
 import usst.edu.cn.sharebooks.component.RxBus;
@@ -35,6 +38,7 @@ import usst.edu.cn.sharebooks.model.event.UpdateUserInfoEvent;
 import usst.edu.cn.sharebooks.model.user.User;
 import usst.edu.cn.sharebooks.network.RetrofitSingleton;
 import usst.edu.cn.sharebooks.ui.adapter.MainFragmentAdapter;
+import usst.edu.cn.sharebooks.util.DialogUtil;
 import usst.edu.cn.sharebooks.util.RxUtil;
 import usst.edu.cn.sharebooks.util.ToastUtil;
 
@@ -220,24 +224,51 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings){
+//            注销登录操作
+            final MaterialDialog materialDialog = new MaterialDialog(this);
+            materialDialog.setMessage("确认要注销登录信息吗?")
+                    .setPositiveButton("确认", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            materialDialog.dismiss();
+                            clearLoginInfo();
+                        }
+                    })
+                    .setNegativeButton("取消", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            materialDialog.dismiss();
+                        }
+                    })
+                    .setCanceledOnTouchOutside(true)
+                    .show();
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-           @Override
-           public void onClick(View v) {
-               switch (v.getId()){
-            case R.id.tab_bottom_first:
-                mViewPager.setCurrentItem(0);
-                break;
-           case R.id.tab_bottom_second:
-               mViewPager.setCurrentItem(1);
-               break;
-           case R.id.tab_bottom_third:
-               mViewPager.setCurrentItem(2);
-               break;
-          }
+    private void clearLoginInfo(){
+        if (DataSupport.findAll(User.class) != null){
+            DataSupport.deleteAll(User.class);//删除掉之前存在的user
+        }
+        Intent intent = new Intent(MainActivity.this,LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
+       @Override
+       public void onClick(View v) {
+           switch (v.getId()){
+        case R.id.tab_bottom_first:
+            mViewPager.setCurrentItem(0);
+            break;
+       case R.id.tab_bottom_second:
+           mViewPager.setCurrentItem(1);
+           break;
+       case R.id.tab_bottom_third:
+           mViewPager.setCurrentItem(2);
+           break;
+      }
     }
     //这个方法用于为底部的按钮设置颜色
     private void updateBottomButtons(int pos){
@@ -266,8 +297,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         Log.i("TestCamera","updateUserInfo(User user)...........from MainFragment.........");
         this.mUser = mUser;
         //我需要测试一下下面两句到底有没有刷新secondeFragment里的数据
-//        adapter.setUser(mUser);
-//        adapter.notifyDataSetChanged();
+        adapter.setUser(mUser);
+        adapter.notifyDataSetChanged();
         //一定要调用adapter 刷新这个数据 否则  虽然在mainActivity里修改了  但是adapter里还是使用的旧的数据
         //而且要调用两句
         Log.i("TestCamera",this.mUser.getNickName());

@@ -458,7 +458,7 @@ public class UserSettingActivity extends BaseActivity implements EasyPermissions
                 .doOnNext(new Consumer<UpdateUserInfoResponse>() {
                     @Override
                     public void accept(@io.reactivex.annotations.NonNull UpdateUserInfoResponse updateUserInfoResponse) throws Exception {
-                        Toast.makeText(UserSettingActivity.this,updateUserInfoResponse.message,Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UserSettingActivity.this,updateUserInfoResponse.message,Toast.LENGTH_SHORT).show();
                         if (updateUserInfoResponse.message.equals("修改成功")){
                             updateUserInfo(updateUserInfoResponse.user);
                         }
@@ -507,7 +507,8 @@ public class UserSettingActivity extends BaseActivity implements EasyPermissions
                         DialogUtil.hideDialogForLoading(UserSettingActivity.this);
                         if (updateUserInfoResponse.message.equals("修改成功")){
                             updateUserInfo(updateUserInfoResponse.user);
-                        }//只有成功刷新才进行下一步操作  否则不进行下一步操作
+                        }
+                        //只有成功刷新才进行下一步操作  否则不进行下一步操作
                         //没有刷新 很奇怪  是不是glide 有缓存作用
                     }
                 })

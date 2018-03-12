@@ -2,7 +2,7 @@
     <string name="app_name">BookShare</string>
     <string name="app_description">app_createdBy</string>
     <string name="splash_text">跳过</string>
-    <string name="action_settings">设置</string>
+    <string name="action_settings">注销登录</string>
     <string name="login">登 录</string>
     <string name="username">用户名</string>
     <string name="password">密码</string>
