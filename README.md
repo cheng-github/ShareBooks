@@ -13,7 +13,7 @@ ShareBook提供给所有校园内的学生一个平台,可以将自己的教材�
 
 目前我的数据库里只录入了[我们学校(USST)](http://www.usst.edu.cn/)的所有教材,其中不包括大一的教材。(这个考虑到实际功能的运用，也不会涉及到大一的教材，所以并未录入。)如果出现数据谬误的情况欢迎联系我。q:3419773387或者Email:cheng_deeplove@163.com or spirit.swc@gmail.com
 
-应用Demo下载:[BookShare.apk](https://github.com/cheng-github/ShareBooks/raw/master/%E5%BA%94%E7%94%A8Demo/BookShare.apk)
+应用Demo下载:[ShareBook.apk](https://github.com/cheng-github/ShareBooks/raw/master/%E5%BA%94%E7%94%A8Demo/ShareBook.apk)
 
 ## 二、使用的开源库以及数据支持
 1. [RxJava ](https://github.com/ReactiveX/RxJava)
