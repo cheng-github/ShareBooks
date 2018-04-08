@@ -149,7 +149,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener{
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         mToolBarTitle = (TextView) this.findViewById(R.id.toolbar_title);
         //这样我的textview就可以显示标题了
-        floatingActionButton = (FloatingActionButton)this.findViewById(R.id.float_button);
+//        floatingActionButton = (FloatingActionButton)this.findViewById(R.id.float_button);
     }
 
     private void  setupViewPager(){

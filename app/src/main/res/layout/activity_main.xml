@@ -37,17 +37,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/float_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/floatbutton_margin"
-            android:layout_gravity="end|bottom"
-            app:layout_anchor="@+id/viewpager"
-            app:layout_anchorGravity="end|bottom"
-            android:src="@drawable/ic_search_brone_24dp"
-            app:backgroundTint="@color/colorPrimary"
-            />
+        <!--<android.support.design.widget.FloatingActionButton-->
+            <!--android:id="@+id/float_button"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_margin="@dimen/floatbutton_margin"-->
+            <!--android:layout_gravity="end|bottom"-->
+            <!--app:layout_anchor="@+id/viewpager"-->
+            <!--app:layout_anchorGravity="end|bottom"-->
+            <!--android:src="@drawable/ic_search_brone_24dp"-->
+            <!--app:backgroundTint="@color/colorPrimary"-->
+            <!--/>-->
     </android.support.design.widget.CoordinatorLayout>
     <LinearLayout
         android:background="@color/color_white"
